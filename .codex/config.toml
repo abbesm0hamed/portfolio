@@ -1,0 +1,11 @@
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.cloudflare-docs]
+type = "sse"
+url = "https://docs.mcp.cloudflare.com/sse"
+
+[mcp_servers.astro-docs]
+type = "http"
+url = "https://mcp.docs.astro.build/mcp"
