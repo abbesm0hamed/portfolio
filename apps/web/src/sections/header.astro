@@ -1,6 +1,6 @@
 ---
-import { Button } from "@workspace/ui/components/button"
-import { Icons } from "@/icons"
+import { CopyEmail } from "@/sections/copy-email"
+import { ThemeToggle } from "@/sections/theme-toggle"
 ---
 
 <header class="flex flex-col">
@@ -12,9 +12,9 @@ import { Icons } from "@/icons"
   <div class="h-10 border-b">
     <div class="h-full container">
       <div class="h-full border-x flex justify-between">
-        <Button client:load variant="ghost" className="h-full border-r border-r-border text-gray-400 hover:text-gray-700/40"><Icons.ArrowLeft /></Button>
+        <CopyEmail client:load />
         <div class="flex-1 bg-[url('/gggrain.svg')] bg-cover bg-center bg-no-repeat" />
-        <Button client:load variant="ghost" className="h-full border-l border-l-border text-gray-400 hover:text-gray-700/40"><Icons.ArrowRight /></Button>
+        <ThemeToggle client:load />
       </div>
     </div>
   </div>

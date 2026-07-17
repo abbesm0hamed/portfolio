@@ -4,18 +4,18 @@ import Footer from "@/sections/footer.astro"
 import "@workspace/ui/globals.css"
 ---
 
-<html lang="en" class="h-full overflow-hidden">
+<html lang="en" class="h-full overflow-hidden" suppressHydrationWarning>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Abbes | Portfolio</title>
   </head>
-  <body class="h-screen flex flex-col">
+  <body class="h-screen flex flex-col overflow-hidden bg-background text-foreground">
     <Header />
-    <div class="flex-1">
-      <div class="container h-full">
-        <div class="border-x h-full">
+    <div class="flex-1 min-h-0">
+      <div class="container h-full min-h-0">
+        <div class="border-x h-full min-h-0 overflow-hidden">
           <slot />
         </div>
       </div>

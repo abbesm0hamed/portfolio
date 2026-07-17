@@ -1,13 +1,17 @@
 import {
-  RiArrowLeftSLine,
-  RiArrowRightSLine,
-  RiArrowUpSLine,
   RiArrowDownSLine,
+  RiArrowUpSLine,
+  RiCheckLine,
+  RiMailLine,
+  RiMoonLine,
+  RiSunLine,
 } from "@remixicon/react";
 
 export const Icons = {
   ArrowDown: RiArrowDownSLine,
-  ArrowLeft: RiArrowLeftSLine,
-  ArrowRight: RiArrowRightSLine,
   ArrowUp: RiArrowUpSLine,
+  Check: RiCheckLine,
+  Mail: RiMailLine,
+  Moon: RiMoonLine,
+  Sun: RiSunLine,
 };
