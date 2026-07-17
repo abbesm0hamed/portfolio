@@ -1,7 +1,21 @@
 ---
+import { Button } from "@workspace/ui/components/button"
+import { Icons } from "@/icons"
 ---
 
-<header class="container h-20">
-  <div class="border-x h-full">
+<header class="flex flex-col">
+  <div class="h-10 border-b">
+    <div class="h-full container">
+      <div class="h-full border-x"></div>
+    </div>
+  </div>
+  <div class="h-10 border-b">
+    <div class="h-full container">
+      <div class="h-full border-x flex justify-between">
+        <Button client:load className="h-full border-none border-r"><Icons.ArrowLeft /></Button>
+        <div class="flex-1 bg-red-100"/>
+        <Button client:load className="h-full border-none border-l"><Icons.ArrowRight /></Button>
+      </div>
+    </div>
   </div>
 </header>
