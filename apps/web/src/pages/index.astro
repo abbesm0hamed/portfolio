@@ -1,25 +1,121 @@
 ---
-import "@workspace/ui/globals.css"
-import { Button } from "@workspace/ui/components/button"
+import Main from "../layouts/main.astro"
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Astro App</title>
-  </head>
-  <body>
-    <div class="flex min-h-svh p-6">
-      <div class="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 class="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We've already added the button component for you.</p>
-          <Button client:load className="mt-2">Button</Button>
-        </div>
+<Main>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-side header-left">
+        <span class="mono-tiny">EST. 2024</span>
       </div>
-    </div>
-  </body>
-</html>
+
+      <div class="header-center">
+        <h1 class="masthead">ABBES</h1>
+        <p class="tagline">Full-Stack Developer</p>
+      </div>
+
+      <div class="header-side header-right">
+        <span class="mono-tiny">17.07.2026</span>
+      </div>
+    </header>
+
+    <!-- BODY -->
+    <main class="body">
+      <!-- LEFT: Section nav -->
+      <aside class="col-left">
+        <nav class="section-nav">
+          <a href="#about" class="nav-item active">ABOUT</a>
+          <a href="#work" class="nav-item">WORK</a>
+          <a href="#stack" class="nav-item">STACK</a>
+          <a href="#contact" class="nav-item">CONTACT</a>
+        </nav>
+      </aside>
+
+      <!-- CENTER: Content -->
+      <section class="col-center">
+        <div id="about" class="section-block">
+          <h2 class="section-title">About</h2>
+          <p class="body-text">
+            I build things for the web. Clean code, thoughtful interfaces,
+            and solid architecture. Focused on craft over complexity.
+          </p>
+        </div>
+
+        <div id="work" class="section-block">
+          <h2 class="section-title">Work</h2>
+
+          <div class="project-row">
+            <span class="project-num">01</span>
+            <div class="project-info">
+              <h3 class="project-name">Project One</h3>
+              <p class="project-desc">A short description of what this project does and why it matters.</p>
+            </div>
+            <span class="project-meta">2025</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-num">02</span>
+            <div class="project-info">
+              <h3 class="project-name">Project Two</h3>
+              <p class="project-desc">Another project, different scope, same attention to detail.</p>
+            </div>
+            <span class="project-meta">2025</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-num">03</span>
+            <div class="project-info">
+              <h3 class="project-name">Project Three</h3>
+              <p class="project-desc">The one that taught me the most. Full-stack, end to end.</p>
+            </div>
+            <span class="project-meta">2024</span>
+          </div>
+
+          <div class="project-row">
+            <span class="project-num">04</span>
+            <div class="project-info">
+              <h3 class="project-name">Project Four</h3>
+              <p class="project-desc">Side project that turned into something real.</p>
+            </div>
+            <span class="project-meta">2024</span>
+          </div>
+        </div>
+
+        <div id="stack" class="section-block">
+          <h2 class="section-title">Stack</h2>
+          <p class="body-text">
+            TypeScript, React, Astro, Go, PostgreSQL, Tailwind CSS.
+          </p>
+        </div>
+
+        <div id="contact" class="section-block">
+          <h2 class="section-title">Contact</h2>
+          <p class="body-text">
+            hello@abbes.dev
+          </p>
+        </div>
+      </section>
+
+      <!-- RIGHT: Additional info -->
+      <aside class="col-right">
+        <div class="sidebar-block">
+          <span class="mono-label">LOCATION</span>
+          <p class="sidebar-value">Earth</p>
+        </div>
+        <div class="sidebar-block">
+          <span class="mono-label">FOCUS</span>
+          <p class="sidebar-value">Web &amp; Systems</p>
+        </div>
+        <div class="sidebar-block">
+          <span class="mono-label">LINKS</span>
+          <div class="sidebar-links">
+            <a href="#" class="sidebar-link">GitHub</a>
+            <a href="#" class="sidebar-link">Twitter</a>
+            <a href="#" class="sidebar-link">LinkedIn</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+</Main>
