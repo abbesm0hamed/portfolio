@@ -19,6 +19,7 @@
     "@remixicon/react": "^4.9.0",
     "class-variance-authority": "^0.7.1",
     "cnfast": "^0.0.8",
+    "embla-carousel-react": "^8.6.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "shadcn": "^4.13.0",
