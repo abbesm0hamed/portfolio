@@ -27,6 +27,7 @@
     "dev:web": "vp run --filter web dev",
     "deploy": "vp run --filter @portfolio/infra deploy",
     "destroy": "vp run --filter @portfolio/infra destroy",
+    "bump-deps": "bunx npm-check-updates --deep -u",
     "fix": "ultracite fix"
   },
   "dependencies": {
@@ -41,10 +42,10 @@
     "lefthook": "latest",
     "oxfmt": "latest",
     "oxlint": "latest",
-    "rolldown": "1.1.4",
+    "rolldown": "1.2.0",
     "typescript": "catalog:",
-    "ultracite": "7.9.3",
-    "vite-plus": "0.2.2"
+    "ultracite": "7.9.4",
+    "vite-plus": "0.2.5"
   },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2"
