@@ -7,8 +7,11 @@ import Contact from "@/sections/home/contact/index.astro"
 ---
 
 <Layout>
-  <div id="main-scroll" class="h-full flex flex-col overflow-y-auto">
-    <div class="grid grid-cols-2 max-[900px]:grid-cols-1">
+  <div
+    id="main-scroll"
+    class="h-full flex flex-col overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+  >
+    <div class="grid grid-cols-[60%_40%] max-[900px]:grid-cols-1">
       <Masthead />
     </div>
 

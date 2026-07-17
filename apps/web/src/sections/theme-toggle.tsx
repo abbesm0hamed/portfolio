@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/sections/theme-provider";
 const ThemeToggleButton = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -17,6 +18,7 @@ const ThemeToggleButton = () => {
 
   const toggleTheme = () => {
     setTheme(isDark ? "light" : "dark");
+    setRotation((r) => r + 180);
   };
 
   return (
@@ -27,7 +29,12 @@ const ThemeToggleButton = () => {
       onClick={toggleTheme}
       className="h-full border-l border-l-border text-muted-foreground hover:text-foreground"
     >
-      {isDark ? <Icons.Sun /> : <Icons.Moon />}
+      <span
+        className="inline-block transition-transform duration-500 ease-in-out"
+        style={{ transform: `rotate(${rotation}deg)` }}
+      >
+        <Icons.Theme />
+      </span>
     </Button>
   );
 };

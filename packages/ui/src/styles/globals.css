@@ -128,6 +128,17 @@
   max-width: theme(--breakpoint-2xl);
 }
 
+@utility bg-grain {
+  background-image: url("/gggrain.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @variant dark {
+    background-image: url("/gggrain-dark.svg");
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
