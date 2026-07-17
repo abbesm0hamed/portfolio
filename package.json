@@ -33,6 +33,7 @@
   "dependencies": {
     "@portfolio/env": "workspace:*",
     "dotenv": "catalog:",
+    "next-themes": "^0.4.6",
     "zod": "catalog:"
   },
   "devDependencies": {

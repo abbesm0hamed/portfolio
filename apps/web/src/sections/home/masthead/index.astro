@@ -1,0 +1,21 @@
+---
+import { SocialBar } from "@/sections/social-bar"
+---
+
+<div class="border-r border-b flex flex-col justify-between overflow-hidden min-h-0">
+  <div class="flex-1 flex flex-col justify-center p-6">
+    <span class="text-[clamp(2rem,8vw,3rem)] font-bold tracking-[0.15em] leading-none">Mohamed Abbes</span>
+    <span class="text-[0.8125rem] tracking-[0.2em] uppercase text-muted-foreground mt-2">Code Composer!</span>
+    <p class="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch] mt-2">
+      I build things for the web. Clean code, thoughtful interfaces, and solid architecture.
+    </p>
+  </div>
+  <div class="h-10 border-t border-t-border shrink-0 flex">
+    <SocialBar client:load />
+    <div class="flex-1 bg-grain h-full" />
+  </div>
+</div>
+
+<div class="border-b p-2 overflow-hidden min-h-0 h-[min(42vw,320px)]">
+  <div class="w-full h-full border border-border bg-muted"></div>
+</div>

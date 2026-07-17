@@ -1,0 +1,66 @@
+---
+import { Button } from "@workspace/ui/components/button"
+import { Icons } from "@/icons"
+---
+
+<footer class="flex flex-col">
+  <div class="h-10 border-t">
+    <div class="h-full container">
+      <div class="h-full border-x flex justify-between">
+        <Button
+          client:load
+          variant="ghost"
+          data-scroll="down"
+          aria-label="Scroll down"
+          className="h-full border-r border-r-border text-muted-foreground hover:text-foreground"
+        >
+          <Icons.ArrowDown />
+        </Button>
+        <div class="flex-1 bg-grain" />
+        <Button
+          client:load
+          variant="ghost"
+          data-scroll="up"
+          aria-label="Scroll up"
+          className="h-full border-l border-l-border text-muted-foreground hover:text-foreground"
+        >
+          <Icons.ArrowUp />
+        </Button>
+      </div>
+    </div>
+  </div>
+  <div class="h-10 border-t">
+    <div class="h-full container">
+      <div class="h-full border-x"></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const SCROLL_RATIO = 0.85
+
+  const scrollMain = (direction: "up" | "down") => {
+    const root = document.querySelector("#main-scroll")
+    if (!root) {
+      return
+    }
+
+    const amount = root.clientHeight * SCROLL_RATIO
+    root.scrollBy({
+      behavior: "smooth",
+      top: direction === "down" ? amount : -amount,
+    })
+  }
+
+  document.querySelector("footer")?.addEventListener("click", (event) => {
+    const target = (event.target as HTMLElement | null)?.closest("[data-scroll]")
+    if (!(target instanceof HTMLElement)) {
+      return
+    }
+
+    const direction = target.dataset.scroll
+    if (direction === "up" || direction === "down") {
+      scrollMain(direction)
+    }
+  })
+</script>

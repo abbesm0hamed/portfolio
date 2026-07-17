@@ -1,0 +1,21 @@
+---
+import { CopyEmail } from "@/sections/copy-email"
+import { ThemeToggle } from "@/sections/theme-toggle"
+---
+
+<header class="flex flex-col">
+  <div class="h-10 border-b">
+    <div class="h-full container">
+      <div class="h-full border-x"></div>
+    </div>
+  </div>
+  <div class="h-10 border-b">
+    <div class="h-full container">
+      <div class="h-full border-x flex justify-between">
+        <!-- <CopyEmail client:load /> -->
+        <div class="flex-1 bg-grain" />
+        <ThemeToggle client:load />
+      </div>
+    </div>
+  </div>
+</header>

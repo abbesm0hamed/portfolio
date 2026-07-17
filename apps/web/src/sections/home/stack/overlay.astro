@@ -1,0 +1,28 @@
+---
+const tools = [
+  { desc: "Type-safe JavaScript for large-scale apps", name: "TypeScript" },
+  { desc: "Component-based UI library", name: "React" },
+  { desc: "Content-focused web framework", name: "Astro" },
+  { desc: "Fast, compiled backend language", name: "Go" },
+  { desc: "Reliable relational database", name: "PostgreSQL" },
+  { desc: "Utility-first CSS framework", name: "Tailwind CSS" },
+];
+---
+
+<section id="stack" class="overlay fixed inset-0 bg-background z-50 p-8 overflow-y-auto border border-border">
+  <div class="flex justify-between items-center pb-8 border-b border-border mb-8">
+    <span class="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">Stack</span>
+    <a href="#" class="text-[0.6875rem] tracking-[0.15em] uppercase text-muted-foreground py-2 px-4 border border-border hover:bg-muted">Close ✕</a>
+  </div>
+  <div class="flex-1">
+    <h2 class="text-[clamp(2rem,5vw,4rem)] font-bold tracking-[0.08em] leading-none mb-8">Stack</h2>
+    <div class="grid grid-cols-3 gap-4 max-[900px]:grid-cols-2 max-[480px]:grid-cols-1">
+      {tools.map((t) => (
+        <div class="border border-border p-6 flex flex-col gap-2">
+          <span class="text-base font-semibold">{t.name}</span>
+          <span class="text-[0.8125rem] text-muted-foreground leading-normal">{t.desc}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
