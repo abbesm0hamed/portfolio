@@ -10,39 +10,53 @@ import {
   CarouselPrevious,
 } from "@workspace/ui/components/carousel";
 
-const writings = [
+const items = [
   {
-    date: "Jan 2025",
-    desc: "A deep dive into how I think about building software that lasts.",
-    id: "post-01",
+    category: "Operating System",
+    desc: "NixOS — declarative, reproducible, and fully version-controlled. My entire system is a git repo.",
+    id: "setup-os",
     num: "01",
-    title: "On Writing Code That Ages Well",
+    title: "NixOS",
   },
   {
-    date: "Mar 2025",
-    desc: "What embedded systems taught me about constraints and clarity.",
-    id: "post-02",
+    category: "Terminal",
+    desc: "Ghostty with a hand-tuned config. Fast, GPU-accelerated, and native — the first terminal that felt right.",
+    id: "setup-terminal",
     num: "02",
-    title: "Lessons from the Bare Metal",
+    title: "Ghostty",
   },
   {
-    date: "May 2025",
-    desc: "The small decisions that quietly define a product's character.",
-    id: "post-03",
+    category: "Shell",
+    desc: "Zsh with Starship prompt. Minimal, fast, and honest — shows exactly what I need, nothing more.",
+    id: "setup-shell",
     num: "03",
-    title: "Details Are the Product",
+    title: "Zsh + Starship",
+  },
+  {
+    category: "Editor",
+    desc: "Neovim. Configured from scratch with Lua. The editor is part of the craft — I treat it that way.",
+    id: "setup-editor",
+    num: "04",
+    title: "Neovim",
+  },
+  {
+    category: "Dotfiles",
+    desc: "Managed with GNU Stow. Every config lives in one repo, symlinked and tracked. One command to bootstrap.",
+    id: "setup-dotfiles",
+    num: "05",
+    title: "GNU Stow",
   },
 ];
 
-export default function WritingsCarousel() {
+export default function SetupCarousel() {
   return (
     <Carousel
       opts={{ align: "start", loop: true }}
-      className="h-full flex-1 flex flex-col"
+      className="h-full flex-1 flex flex-col border-l"
     >
       <div className="flex justify-between items-center h-10 border-b">
         <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
-          Writing
+          Setup
         </span>
         <ButtonGroup className="[&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static h-full">
           <CarouselPrevious
@@ -57,23 +71,23 @@ export default function WritingsCarousel() {
         </ButtonGroup>
       </div>
       <CarouselContent className="flex-1">
-        {writings.map((post) => (
-          <CarouselItem key={post.id}>
+        {items.map((item) => (
+          <CarouselItem key={item.id}>
             <a
-              href={`#${post.id}`}
+              href={`/setup#${item.id}`}
               className="p-6 flex flex-col justify-between h-full"
             >
               <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                {post.num} — Post
+                {item.num} — {item.category}
               </span>
               <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
-                {post.title}
+                {item.title}
               </span>
               <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
-                {post.desc}
+                {item.desc}
               </p>
               <span className="text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground self-end py-1.5 px-3 border border-border hover:bg-muted hover:text-foreground">
-                Read →
+                Explore →
               </span>
             </a>
           </CarouselItem>

@@ -1,9 +1,10 @@
 ---
 import Layout from "@/layouts/main.astro"
 import Masthead from "@/sections/home/masthead/index.astro"
-import Writings from "@/sections/home/writings/index.astro"
 import Projects from "@/sections/home/projects/index.astro"
 import Quote from "@/sections/home/quote/index.astro"
+import Setup from "@/sections/home/setup/index.astro"
+import Writings from "@/sections/home/writings/index.astro"
 ---
 
 <Layout>
@@ -16,13 +17,14 @@ import Quote from "@/sections/home/quote/index.astro"
     </div>
 
     <div class="flex-1 min-h-0 flex flex-col max-[900px]:flex-none max-[900px]:min-h-fit">
-      <div class="flex-1 min-h-0 grid grid-cols-[40%_60%] max-[900px]:grid-cols-1 max-[900px]:flex-none max-[900px]:min-h-fit">
+      <div class="flex-1 min-h-0 grid grid-cols-[30%_70%] max-[900px]:grid-cols-1 max-[900px]:flex-none max-[900px]:min-h-fit">
         <Quote />
         <Projects />
       </div>
 
-      <div class="flex-1 min-h-0 grid grid-cols-1 max-[900px]:flex-none max-[900px]:min-h-fit">
+      <div class="flex-1 min-h-0 grid grid-cols-2 max-[900px]:grid-cols-1 max-[900px]:flex-none max-[900px]:min-h-fit">
         <Writings />
+        <Setup />
       </div>
     </div>
   </div>
