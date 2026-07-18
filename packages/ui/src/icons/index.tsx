@@ -6,7 +6,7 @@ import {
   Download,
   Envelope,
   Expand,
-  Sun,
+  Palette,
 } from "reicon-react";
 
 export const Icons = {
@@ -18,6 +18,6 @@ export const Icons = {
   Github: RiGithubLine,
   Linkedin: RiLinkedinLine,
   Mail: Envelope,
-  Theme: Sun,
+  Theme: Palette,
   Twitter: RiTwitterXLine,
 };

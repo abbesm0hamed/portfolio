@@ -72,7 +72,7 @@ export default function ProjectsCarousel() {
                   </p>
                 </div>
                 <Button
-                  className="h-10 w-10 flex items-center justify-center text-muted-foreground border border-border hover:bg-muted hover:text-foreground"
+                  className="h-10 w-10 flex items-center justify-center text-muted-foreground border-r-border border-t-border hover:bg-muted hover:text-foreground"
                   variant="ghost"
                 >
                   <Icons.Expand className="size-4" />

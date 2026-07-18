@@ -1,3 +1,4 @@
+import { Button } from "@workspace/ui/components/button";
 import {
   ButtonGroup,
   ButtonGroupSeparator,
@@ -9,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@workspace/ui/components/carousel";
+import { Icons } from "@workspace/ui/icons";
 
 const writings = [
   {
@@ -56,26 +58,28 @@ export default function WritingsCarousel() {
           />
         </ButtonGroup>
       </div>
-      <CarouselContent className="flex-1">
+      <CarouselContent className="flex-1 m-0 h-full">
         {writings.map((post) => (
-          <CarouselItem key={post.id}>
-            <a
-              href={`#${post.id}`}
-              className="p-6 flex flex-col justify-between h-full"
-            >
-              <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                {post.num} — Post
-              </span>
-              <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
-                {post.title}
-              </span>
-              <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
-                {post.desc}
-              </p>
-              <span className="text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground self-end py-1.5 px-3 border border-border hover:bg-muted hover:text-foreground">
-                Read →
-              </span>
-            </a>
+          <CarouselItem key={post.id} className="p-0">
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-col gap-4 pt-6 pl-6">
+                <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
+                  {post.date} — Post
+                </span>
+                <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none max-w-[20ch]">
+                  {post.title}
+                </span>
+                <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
+                  {post.desc}
+                </p>
+              </div>
+              <Button
+                className="h-10 w-10 flex items-center justify-center text-muted-foreground border-l-border border-t-border hover:bg-muted hover:text-foreground self-end"
+                variant="ghost"
+              >
+                <Icons.Expand className="size-4" />
+              </Button>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
