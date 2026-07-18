@@ -14,18 +14,21 @@ const projects = [
   {
     desc: "A short description of what this project does and why it matters.",
     id: "project-01",
+    image: "/images/projects/project-01.jpg",
     name: "Project One",
     num: "01",
   },
   {
     desc: "Another project, different scope, same attention to detail.",
     id: "project-02",
+    image: "/images/projects/project-02.jpg",
     name: "Project Two",
     num: "02",
   },
   {
     desc: "The one that taught me the most. Full-stack, end to end.",
     id: "project-03",
+    image: "/images/projects/project-03.jpg",
     name: "Project Three",
     num: "03",
   },
@@ -56,23 +59,26 @@ export default function ProjectsCarousel() {
       <CarouselContent className="flex-1">
         {projects.map((p) => (
           <CarouselItem key={p.id}>
-            <a
-              href={`#${p.id}`}
-              className="p-6 flex flex-col justify-between h-full"
-            >
-              <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                {p.num} — Project
-              </span>
-              <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
-                {p.name}
-              </span>
-              <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
-                {p.desc}
-              </p>
-              <span className="text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground self-end py-1.5 px-3 border border-border hover:bg-muted hover:text-foreground">
-                Expand →
-              </span>
-            </a>
+            <div className="grid grid-cols-[50%_50%] h-full">
+              <div className="flex flex-col justify-between h-full">
+                <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
+                  {p.name}
+                </span>
+                <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
+                  {p.desc}
+                </p>
+                <span className="absolute bottom-0 left-0 h-10 w-10 flex items-center justify-center text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground border border-border hover:bg-muted hover:text-foreground">
+                  →
+                </span>
+              </div>
+              <div className="h-full overflow-hidden">
+                <img
+                  alt={p.name}
+                  className="h-full w-full object-cover"
+                  src={p.image}
+                />
+              </div>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
