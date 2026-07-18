@@ -43,7 +43,7 @@ export default function WritingsCarousel() {
       className="h-full flex-1 flex flex-col"
     >
       <div className="flex justify-between items-center h-10 border-b">
-        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
+        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground px-6">
           Writing
         </span>
         <ButtonGroup className="[&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static h-full">

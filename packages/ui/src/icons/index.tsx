@@ -1,4 +1,9 @@
-import { RiGithubLine, RiLinkedinLine, RiTwitterXLine } from "@remixicon/react";
+import {
+  RiGithubLine,
+  RiGitRepositoryLine,
+  RiLinkedinLine,
+  RiTwitterXLine,
+} from "@remixicon/react";
 import {
   ArrowDown,
   ArrowUp,
@@ -15,6 +20,7 @@ export const Icons = {
   Check,
   Download,
   Expand,
+  GitRepository: RiGitRepositoryLine,
   Github: RiGithubLine,
   Linkedin: RiLinkedinLine,
   Mail: Envelope,

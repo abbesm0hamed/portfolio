@@ -119,6 +119,16 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: "Instrument Sans Variable", sans-serif;
   --font-heading: "Noto Sans Variable", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --animate-blink: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 @utility container {

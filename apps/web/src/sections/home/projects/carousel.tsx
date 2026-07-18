@@ -43,7 +43,7 @@ export default function ProjectsCarousel() {
       className="h-full flex-1 flex flex-col border-b"
     >
       <div className="flex justify-between items-center h-10 border-b">
-        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
+        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground px-6">
           Work
         </span>
         <ButtonGroup className="[&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static h-full">
