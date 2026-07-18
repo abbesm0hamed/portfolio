@@ -1,4 +1,8 @@
 import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from "@workspace/ui/components/button-group";
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -31,23 +35,30 @@ export default function ProjectsCarousel() {
   return (
     <Carousel
       opts={{ align: "start", loop: true }}
-      className="flex-1 flex flex-col"
+      className="flex-1 flex flex-col border-b"
     >
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
+      <div className="flex justify-between items-center h-10 border-b">
+        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
           Work
         </span>
-        <div className="flex gap-2 [&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static">
-          <CarouselPrevious />
-          <CarouselNext />
-        </div>
+        <ButtonGroup className="[&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static h-full">
+          <CarouselPrevious
+            variant="ghost"
+            className="h-full border-l border-l-border text-muted-foreground hover:text-foreground w-10"
+          />
+          <ButtonGroupSeparator />
+          <CarouselNext
+            variant="ghost"
+            className="h-full text-muted-foreground hover:text-foreground w-10"
+          />
+        </ButtonGroup>
       </div>
       <CarouselContent className="flex-1">
         {projects.map((p) => (
           <CarouselItem key={p.id}>
             <a
               href={`#${p.id}`}
-              className="border border-border p-6 flex flex-col justify-between h-full"
+              className="p-6 flex flex-col justify-between h-full"
             >
               <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                 {p.num} — Project
