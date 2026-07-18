@@ -1,8 +1,8 @@
 import { Button } from "@workspace/ui/components/button";
+import { Icons } from "@workspace/ui/icons";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { Icons } from "@/icons";
 import { ThemeProvider } from "@/sections/theme-provider";
 
 const ThemeToggleButton = () => {

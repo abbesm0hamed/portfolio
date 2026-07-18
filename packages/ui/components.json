@@ -9,7 +9,7 @@
     "baseColor": "neutral",
     "cssVariables": true
   },
-  "iconLibrary": "remixicon",
+  "iconLibrary": "reicon",
   "rtl": true,
   "menuColor": "default",
   "menuAccent": "subtle",

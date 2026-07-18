@@ -1,4 +1,4 @@
-import { Icons } from "@/icons";
+import { Icons } from "@workspace/ui/icons";
 
 export const ResumeButton = () => (
   <a

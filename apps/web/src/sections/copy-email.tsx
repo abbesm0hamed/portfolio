@@ -1,7 +1,6 @@
 import { Button } from "@workspace/ui/components/button";
+import { Icons } from "@workspace/ui/icons";
 import { useEffect, useRef, useState } from "react";
-
-import { Icons } from "@/icons";
 
 const EMAIL = "hello@abbes.dev";
 const FEEDBACK_MS = 1600;

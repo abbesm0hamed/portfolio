@@ -9,7 +9,7 @@
     "baseColor": "neutral",
     "cssVariables": true
   },
-  "iconLibrary": "remixicon",
+  "iconLibrary": "reicon",
   "aliases": {
     "components": "@/components",
     "hooks": "@/hooks",

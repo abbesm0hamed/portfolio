@@ -1,6 +1,5 @@
 import { Separator } from "@workspace/ui/components/separator";
-
-import { Icons } from "@/icons";
+import { Icons } from "@workspace/ui/icons";
 
 const socials = [
   {

@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@workspace/ui/components/carousel";
+import { Icons } from "@workspace/ui/icons";
 
 const projects = [
   {
@@ -67,9 +68,12 @@ export default function ProjectsCarousel() {
                 <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
                   {p.desc}
                 </p>
-                <span className="absolute bottom-0 left-0 h-10 w-10 flex items-center justify-center text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground border border-border hover:bg-muted hover:text-foreground">
-                  →
-                </span>
+                <button
+                  className="absolute bottom-0 left-0 h-10 w-10 flex items-center justify-center text-muted-foreground border border-border hover:bg-muted hover:text-foreground"
+                  type="button"
+                >
+                  <Icons.Expand className="size-4" />
+                </button>
               </div>
               <div className="h-full overflow-hidden">
                 <img
