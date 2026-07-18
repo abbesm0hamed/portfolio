@@ -1,3 +1,4 @@
+import { Button } from "@workspace/ui/components/button";
 import {
   ButtonGroup,
   ButtonGroupSeparator,
@@ -57,25 +58,27 @@ export default function ProjectsCarousel() {
           />
         </ButtonGroup>
       </div>
-      <CarouselContent className="flex-1">
+      <CarouselContent className="flex-1 m-0 h-full">
         {projects.map((p) => (
-          <CarouselItem key={p.id}>
-            <div className="grid grid-cols-[50%_50%] h-full">
+          <CarouselItem key={p.id} className="p-0">
+            <div className="grid grid-cols-[40%_60%] h-full">
               <div className="flex flex-col justify-between h-full">
-                <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
-                  {p.name}
-                </span>
-                <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
-                  {p.desc}
-                </p>
-                <button
-                  className="absolute bottom-0 left-0 h-10 w-10 flex items-center justify-center text-muted-foreground border border-border hover:bg-muted hover:text-foreground"
-                  type="button"
+                <div className="flex flex-col gap-4 pt-6 pl-6">
+                  <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
+                    {p.name}
+                  </span>
+                  <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
+                    {p.desc}
+                  </p>
+                </div>
+                <Button
+                  className="h-10 w-10 flex items-center justify-center text-muted-foreground border border-border hover:bg-muted hover:text-foreground"
+                  variant="ghost"
                 >
                   <Icons.Expand className="size-4" />
-                </button>
+                </Button>
               </div>
-              <div className="h-full overflow-hidden">
+              <div className="h-full overflow-hidden border-l">
                 <img
                   alt={p.name}
                   className="h-full w-full object-cover"
