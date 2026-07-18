@@ -57,14 +57,14 @@ export default function SetupTerminal() {
   return (
     <div className="h-full flex-1 flex flex-col border-l">
       <div className="flex justify-between items-center h-10 border-b">
-        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
+        <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground px-6">
           Setup
         </span>
         <a
           href="https://github.com/abbesm0hamed/dofs"
           rel="noopener noreferrer"
           target="_blank"
-          class="w-10 h-full"
+          className="flex h-full w-10"
         >
           <Button
             className="h-full w-10 text-muted-foreground hover:text-foreground rounded-none border-l border-l-border"
