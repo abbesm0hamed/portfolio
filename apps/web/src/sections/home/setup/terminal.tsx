@@ -1,5 +1,7 @@
 import { Button } from "@workspace/ui/components/button";
 import { Icons } from "@workspace/ui/icons";
+import { cn } from "@workspace/ui/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
 const items = [
   {
@@ -54,10 +56,41 @@ const items = [
 ];
 
 export default function SetupTerminal() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) {
+      return;
+    }
+    const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+    const isScrollable = scrollHeight > clientHeight;
+    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+    setShowScrollIndicator(isScrollable && !isAtBottom);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) {
+      return;
+    }
+
+    handleScroll();
+
+    const observer = new ResizeObserver(handleScroll);
+    observer.observe(el);
+
+    el.addEventListener("scroll", handleScroll);
+    return () => {
+      el.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="h-full flex-1 flex flex-col border-l">
+    <div className="h-full flex-1 flex flex-col border-l relative">
       <div className="flex justify-between items-center h-10 border-b">
-        <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground px-6">
+        <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground pl-6">
           Setup
         </span>
         <a
@@ -74,7 +107,10 @@ export default function SetupTerminal() {
           </Button>
         </a>
       </div>
-      <div className="flex-1 min-h-0 overflow-y-auto">
+      <div
+        ref={scrollRef}
+        className="flex-1 min-h-0 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
         <div className="p-6 font-mono text-xs space-y-6">
           {items.map((item) => (
             <div key={item.id} className="space-y-1">
@@ -102,6 +138,19 @@ export default function SetupTerminal() {
             <span className="w-2 h-[1em] bg-current animate-blink" />
           </div>
         </div>
+      </div>
+      <div
+        className={cn(
+          "absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none flex flex-col items-center gap-1.5 text-muted-foreground transition-all duration-300",
+          showScrollIndicator
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-1"
+        )}
+      >
+        <span className="text-[0.625rem] tracking-[0.25em] uppercase font-mono bg-background/90 px-2 py-1 rounded border border-border backdrop-blur-xs shadow-xs">
+          More
+        </span>
+        <Icons.ArrowDown className="size-3.5 animate-bounce text-muted-foreground/80" />
       </div>
     </div>
   );
