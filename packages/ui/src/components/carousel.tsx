@@ -180,8 +180,9 @@ const CarouselPrevious = ({
   className,
   variant = "outline",
   size = "icon-sm",
+  icon = <ChevronLeft className="rtl:rotate-180" />,
   ...props
-}: React.ComponentProps<typeof Button>) => {
+}: React.ComponentProps<typeof Button> & { icon?: React.ReactNode }) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
   return (
@@ -200,7 +201,7 @@ const CarouselPrevious = ({
       onClick={scrollPrev}
       {...props}
     >
-      <ChevronLeft className="rtl:rotate-180" />
+      {icon}
       <span className="sr-only">Previous slide</span>
     </Button>
   );
@@ -210,8 +211,9 @@ const CarouselNext = ({
   className,
   variant = "outline",
   size = "icon-sm",
+  icon = <ChevronRight className="rtl:rotate-180" />,
   ...props
-}: React.ComponentProps<typeof Button>) => {
+}: React.ComponentProps<typeof Button> & { icon?: React.ReactNode }) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
 
   return (
@@ -230,7 +232,7 @@ const CarouselNext = ({
       onClick={scrollNext}
       {...props}
     >
-      <ChevronRight className="rtl:rotate-180" />
+      {icon}
       <span className="sr-only">Next slide</span>
     </Button>
   );
