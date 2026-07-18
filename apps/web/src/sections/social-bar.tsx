@@ -22,18 +22,18 @@ const socials = [
 ];
 
 export const SocialBar = () => (
-  <div class="flex items-center h-full">
+  <div className="flex items-center h-full">
     {socials.map(({ icon: Icon, href, label }, index) => (
-      <div key={label} class="flex items-center h-full">
+      <div key={label} className="flex items-center h-full">
         {index > 0 && <Separator orientation="vertical" className="h-full" />}
         <a
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          class="flex items-center justify-center h-full w-10 px-2 text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center justify-center h-full w-10 px-2 text-muted-foreground hover:text-foreground transition-colors"
         >
-          <Icon class="w-4 h-4" />
+          <Icon className="w-4 h-4" />
         </a>
       </div>
     ))}

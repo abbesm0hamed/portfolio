@@ -6,32 +6,35 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
 } from "@workspace/ui/components/carousel";
 
-const projects = [
+const writings = [
   {
-    desc: "A short description of what this project does and why it matters.",
-    id: "project-01",
-    name: "Project One",
+    date: "Jan 2025",
+    desc: "A deep dive into how I think about building software that lasts.",
+    id: "post-01",
     num: "01",
+    title: "On Writing Code That Ages Well",
   },
   {
-    desc: "Another project, different scope, same attention to detail.",
-    id: "project-02",
-    name: "Project Two",
+    date: "Mar 2025",
+    desc: "What embedded systems taught me about constraints and clarity.",
+    id: "post-02",
     num: "02",
+    title: "Lessons from the Bare Metal",
   },
   {
-    desc: "The one that taught me the most. Full-stack, end to end.",
-    id: "project-03",
-    name: "Project Three",
+    date: "May 2025",
+    desc: "The small decisions that quietly define a product's character.",
+    id: "post-03",
     num: "03",
+    title: "Details Are the Product",
   },
 ];
 
-export default function ProjectsCarousel() {
+export default function WritingsCarousel() {
   return (
     <Carousel
       opts={{ align: "start", loop: true }}
@@ -39,7 +42,7 @@ export default function ProjectsCarousel() {
     >
       <div className="flex justify-between items-center h-10 border-b">
         <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
-          Work
+          Writing
         </span>
         <ButtonGroup className="[&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static h-full">
           <CarouselPrevious
@@ -54,23 +57,23 @@ export default function ProjectsCarousel() {
         </ButtonGroup>
       </div>
       <CarouselContent className="flex-1">
-        {projects.map((p) => (
-          <CarouselItem key={p.id}>
+        {writings.map((post) => (
+          <CarouselItem key={post.id}>
             <a
-              href={`#${p.id}`}
+              href={`#${post.id}`}
               className="p-6 flex flex-col justify-between h-full"
             >
               <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                {p.num} — Project
+                {post.num} — Post
               </span>
               <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
-                {p.name}
+                {post.title}
               </span>
               <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
-                {p.desc}
+                {post.desc}
               </p>
               <span className="text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground self-end py-1.5 px-3 border border-border hover:bg-muted hover:text-foreground">
-                Expand →
+                Read →
               </span>
             </a>
           </CarouselItem>
