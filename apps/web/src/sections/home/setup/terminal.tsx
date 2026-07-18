@@ -39,20 +39,27 @@ const items = [
     id: "setup-editor",
     title: "Neovim",
   },
-  // {
-  //   category: "Launcher",
-  //   cmd: "rofi --version",
-  //   desc: "Rofi — application launcher, window switcher, and dmenu replacement. Bound to Super+Space.",
-  //   id: "setup-launcher",
-  //   title: "Rofi",
-  // },
-  // {
-  //   category: "Dotfiles",
-  //   cmd: "dofs doctor",
-  //   desc: "Managed with chezmoi + Ansible under ~/dofs. One command bootstraps an entire workstation.",
-  //   id: "setup-dotfiles",
-  //   title: "dofs",
-  // },
+  {
+    category: "Launcher",
+    cmd: "rofi --version",
+    desc: "Rofi — application launcher, window switcher, and dmenu replacement. Bound to Super+Space.",
+    id: "setup-launcher",
+    title: "Rofi",
+  },
+  {
+    category: "Status Bar",
+    cmd: "waybar --version",
+    desc: "Waybar — highly customizable status bar for Wayland compositors. Displays workspaces, media, and system info.",
+    id: "setup-waybar",
+    title: "Waybar",
+  },
+  {
+    category: "Dotfiles",
+    cmd: "dofs doctor",
+    desc: "Managed with chezmoi + Ansible under ~/dofs. One command bootstraps an entire workstation.",
+    id: "setup-dotfiles",
+    title: "dofs",
+  },
 ];
 
 export default function SetupTerminal() {
