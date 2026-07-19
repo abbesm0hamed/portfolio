@@ -3,7 +3,7 @@ import { cn } from "@workspace/ui/lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 import type { UseEmblaCarouselType } from "embla-carousel-react";
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "reicon-react";
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "reicon-react";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -194,7 +194,7 @@ const CarouselPrevious = ({
         "absolute touch-manipulation",
         orientation === "horizontal"
           ? "inset-y-0 -start-12 my-auto"
-          : "-top-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90",
+          : "-top-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2",
         className
       )}
       disabled={!canScrollPrev}
@@ -225,7 +225,7 @@ const CarouselNext = ({
         "absolute touch-manipulation",
         orientation === "horizontal"
           ? "inset-y-0 -end-12 my-auto"
-          : "-bottom-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90",
+          : "-bottom-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2",
         className
       )}
       disabled={!canScrollNext}
@@ -238,6 +238,64 @@ const CarouselNext = ({
   );
 };
 
+interface CarouselControlsProps {
+  className?: string;
+  buttonClassName?: string;
+  nextIcon?: React.ReactNode;
+  prevIcon?: React.ReactNode;
+}
+
+const CarouselControls = ({
+  className,
+  buttonClassName,
+  nextIcon,
+  prevIcon,
+}: CarouselControlsProps) => {
+  const { orientation, scrollNext, scrollPrev, canScrollNext, canScrollPrev } =
+    useCarousel();
+
+  const defaultNextIcon =
+    orientation === "horizontal" ? <ChevronRight /> : <ChevronDown />;
+  const defaultPrevIcon =
+    orientation === "horizontal" ? <ChevronLeft /> : <ChevronUp />;
+
+  return (
+    <div
+      data-slot="carousel-controls"
+      className={cn("flex h-full", className)}
+    >
+      <Button
+        data-slot="carousel-controls-next"
+        variant="ghost"
+        size="icon-sm"
+        className={cn(
+          "h-full w-10 rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
+          buttonClassName
+        )}
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+        aria-label="Next slide"
+      >
+        {nextIcon ?? defaultNextIcon}
+      </Button>
+      <Button
+        data-slot="carousel-controls-prev"
+        variant="ghost"
+        size="icon-sm"
+        className={cn(
+          "h-full w-10 rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
+          buttonClassName
+        )}
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+        aria-label="Previous slide"
+      >
+        {prevIcon ?? defaultPrevIcon}
+      </Button>
+    </div>
+  );
+};
+
 export {
   type CarouselApi,
   Carousel,
@@ -245,5 +303,6 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselControls,
   useCarousel,
 };

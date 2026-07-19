@@ -44,6 +44,7 @@
     "oxfmt": "latest",
     "oxlint": "latest",
     "rolldown": "1.2.0",
+    "shadcn": "^4.13.1",
     "typescript": "catalog:",
     "ultracite": "7.9.4",
     "vite-plus": "0.2.5"
