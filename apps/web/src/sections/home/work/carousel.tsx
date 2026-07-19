@@ -35,7 +35,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {w.year} — {w.role} — {w.stack}
                   </span>
-                  <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none">
+                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none">
                     {w.title}
                   </span>
                   <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[30ch]">
