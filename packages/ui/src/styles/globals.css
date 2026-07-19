@@ -123,6 +123,7 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --animate-blink: blink 1s step-end infinite;
+  --breakpoint-layout: 1280px;
 }
 
 @keyframes blink {
@@ -162,4 +163,12 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+}
+
+.overlay {
+  display: none;
+}
+
+.overlay:target {
+  display: block;
 }

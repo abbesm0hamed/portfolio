@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/main.astro"
 import Masthead from "@/sections/home/masthead/index.astro"
-import Projects from "@/sections/home/projects/index.astro"
+import Work from "@/sections/home/work/index.astro"
 import Quote from "@/sections/home/quote/index.astro"
 import Setup from "@/sections/home/setup/index.astro"
 import Writings from "@/sections/home/writings/index.astro"
@@ -10,19 +10,19 @@ import Writings from "@/sections/home/writings/index.astro"
 <Layout>
   <div
     id="main-scroll"
-    class="h-full flex flex-col overflow-hidden max-[900px]:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+    class="h-full flex flex-col overflow-hidden max-layout:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
   >
-    <div class="grid grid-cols-[60%_40%] max-[900px]:grid-cols-1">
+    <div class="grid grid-cols-[60%_40%] max-layout:grid-cols-1">
       <Masthead />
     </div>
 
-    <div class="flex-1 min-h-0 flex flex-col max-[900px]:flex-none max-[900px]:min-h-fit">
-      <div class="flex-1 min-h-0 grid grid-cols-[30%_70%] max-[900px]:grid-cols-1 max-[900px]:flex-none max-[900px]:min-h-fit">
+    <div class="flex-1 min-h-0 flex flex-col max-layout:flex-none max-layout:min-h-fit">
+      <div class="flex-1 min-h-0 grid grid-cols-[25%_75%] max-layout:grid-cols-1 max-layout:flex-none max-layout:min-h-fit">
         <Quote />
-        <Projects />
+        <Work />
       </div>
 
-      <div class="flex-1 min-h-0 grid grid-cols-[65%_35%] max-[900px]:grid-cols-1 max-[900px]:flex-none max-[900px]:min-h-fit">
+      <div class="flex-1 min-h-0 grid grid-cols-[55%_45%] max-layout:grid-cols-1 max-layout:flex-none max-layout:min-h-fit">
         <Writings />
         <Setup />
       </div>

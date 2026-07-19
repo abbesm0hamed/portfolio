@@ -9,5 +9,5 @@
   <feColorMatrix x="0%" y="0%" width="100%" height="100%" in="componentTransfer" result="colormatrix2" type="matrix" values="1 0 0 0 0
           0 1 0 0 0
           0 0 1 0 0
-          0 0 0 21 -13"></feColorMatrix>
-  </filter></defs><g><rect width="100%" height="100%" fill="hsl(0, 1%, 6%)"></rect><rect width="100%" height="100%" fill="url(#gggrain-gradient3)"></rect><rect width="100%" height="100%" fill="url(#gggrain-gradient2)"></rect><rect width="100%" height="100%" fill="transparent" filter="url(#gggrain-filter)" opacity="0.71" style="mix-blend-mode: overlay"></rect></g></svg>
+          0 0 0 25 -17"></feColorMatrix>
+  </filter></defs><g><rect width="100%" height="100%" fill="hsl(0, 1%, 0%)"></rect><rect width="100%" height="100%" fill="url(#gggrain-gradient3)"></rect><rect width="100%" height="100%" fill="url(#gggrain-gradient2)"></rect><rect width="100%" height="100%" fill="transparent" filter="url(#gggrain-filter)" opacity="0.42" style="mix-blend-mode: soft-light"></rect></g></svg>

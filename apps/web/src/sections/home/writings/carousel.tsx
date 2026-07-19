@@ -58,10 +58,10 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {post.date} — Post
                   </span>
-                  <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none max-w-[20ch]">
+                  <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none max-w-[40ch]">
                     {post.title}
                   </span>
-                  <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
+                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[50ch]">
                     {post.desc}
                   </p>
                 </div>
