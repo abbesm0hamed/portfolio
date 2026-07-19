@@ -1,5 +1,6 @@
 ---
 import WritingsCarouselReact from "./carousel.tsx"
+import { writings } from "./data"
 ---
 
-<WritingsCarouselReact client:load />
+<WritingsCarouselReact writings={writings} client:load />

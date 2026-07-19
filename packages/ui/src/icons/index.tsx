@@ -3,6 +3,8 @@ import {
   RiGitRepositoryLine,
   RiLinkedinLine,
   RiTwitterXLine,
+  RiOpenaiFill,
+  RiClaudeFill,
 } from "@remixicon/react";
 import {
   ArrowDown,
@@ -22,12 +24,14 @@ export const Icons = {
   Check,
   ChevronDown,
   ChevronUp,
+  Claude: RiClaudeFill,
   Download,
   Expand,
   GitRepository: RiGitRepositoryLine,
   Github: RiGithubLine,
   Linkedin: RiLinkedinLine,
   Mail: Envelope,
+  OpenAI: RiOpenaiFill,
   Theme: DarkLight,
   Twitter: RiTwitterXLine,
 };

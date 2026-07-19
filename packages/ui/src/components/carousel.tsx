@@ -3,7 +3,12 @@ import { cn } from "@workspace/ui/lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 import type { UseEmblaCarouselType } from "embla-carousel-react";
 import * as React from "react";
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "reicon-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+} from "reicon-react";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -260,10 +265,7 @@ const CarouselControls = ({
     orientation === "horizontal" ? <ChevronLeft /> : <ChevronUp />;
 
   return (
-    <div
-      data-slot="carousel-controls"
-      className={cn("flex h-full", className)}
-    >
+    <div data-slot="carousel-controls" className={cn("flex h-full", className)}>
       <Button
         data-slot="carousel-controls-next"
         variant="ghost"

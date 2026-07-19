@@ -12,31 +12,13 @@ import {
 } from "@workspace/ui/components/carousel";
 import { Icons } from "@workspace/ui/icons";
 
-const writings = [
-  {
-    date: "Jan 2025",
-    desc: "A deep dive into how I think about building software that lasts.",
-    id: "post-01",
-    num: "01",
-    title: "On Writing Code That Ages Well",
-  },
-  {
-    date: "Mar 2025",
-    desc: "What embedded systems taught me about constraints and clarity.",
-    id: "post-02",
-    num: "02",
-    title: "Lessons from the Bare Metal",
-  },
-  {
-    date: "May 2025",
-    desc: "The small decisions that quietly define a product's character.",
-    id: "post-03",
-    num: "03",
-    title: "Details Are the Product",
-  },
-];
+import type { Writing } from "./data";
 
-export default function WritingsCarousel() {
+interface WritingsCarouselProps {
+  writings: Writing[];
+}
+
+export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
   return (
     <Carousel
       opts={{ align: "start", loop: true }}
@@ -59,29 +41,70 @@ export default function WritingsCarousel() {
         </ButtonGroup>
       </div>
       <CarouselContent className="flex-1 m-0 h-full">
-        {writings.map((post) => (
-          <CarouselItem key={post.id} className="p-0">
-            <div className="flex flex-col justify-between h-full">
-              <div className="flex flex-col gap-4 pt-6 pl-6">
-                <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                  {post.date} — Post
-                </span>
-                <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none max-w-[20ch]">
-                  {post.title}
-                </span>
-                <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
-                  {post.desc}
-                </p>
+        {writings.map((post) => {
+          const base =
+            typeof window === "undefined"
+              ? (import.meta.env.PUBLIC_SERVER_URL as string)
+              : window.location.origin;
+          const articleUrl = `${base}/writings/${post.slug}`;
+          const promptText = `Please read and summarize this article, then be ready to answer questions about it: ${articleUrl}`;
+          const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(promptText)}`;
+          const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(promptText)}`;
+
+          return (
+            <CarouselItem key={post.slug} className="p-0">
+              <div className="flex flex-row justify-between h-full">
+                <div className="flex flex-col gap-4 pt-6 pl-6">
+                  <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
+                    {post.date} — Post
+                  </span>
+                  <span className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-[0.08em] leading-none max-w-[20ch]">
+                    {post.title}
+                  </span>
+                  <p className="text-[0.875rem] text-muted-foreground leading-relaxed max-w-[40ch]">
+                    {post.desc}
+                  </p>
+                </div>
+                <div className="flex flex-col justify-between border-l border-border h-full">
+                  <div className="flex flex-col">
+                    <a
+                      href={chatgptUrl}
+                      target="_blank"
+                      rel="noopener"
+                      title="Summarize with ChatGPT"
+                    >
+                      <Button
+                        className="h-10 w-10 border-b border-b-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                        variant="ghost"
+                      >
+                        <Icons.OpenAI className="size-4" />
+                      </Button>
+                    </a>
+                    <a
+                      href={claudeUrl}
+                      target="_blank"
+                      rel="noopener"
+                      title="Summarize with Claude"
+                    >
+                      <Button
+                        className="h-10 w-10 border-b border-b-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                        variant="ghost"
+                      >
+                        <Icons.Claude className="size-4" />
+                      </Button>
+                    </a>
+                  </div>
+                  <Button
+                    className="h-10 w-10 border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                    variant="ghost"
+                  >
+                    <Icons.Expand className="size-4" />
+                  </Button>
+                </div>
               </div>
-              <Button
-                className="h-10 w-10 flex items-center justify-center text-muted-foreground border-l-border border-t-border hover:bg-muted hover:text-foreground self-end"
-                variant="ghost"
-              >
-                <Icons.Expand className="size-4" />
-              </Button>
-            </div>
-          </CarouselItem>
-        ))}
+            </CarouselItem>
+          );
+        })}
       </CarouselContent>
     </Carousel>
   );
