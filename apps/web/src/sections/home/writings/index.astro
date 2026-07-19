@@ -1,6 +1,8 @@
 ---
-import WritingsCarouselReact from "./carousel.tsx"
+import WritingsCarousel from "./carousel.tsx"
 import { writings } from "./data"
 ---
 
-<WritingsCarouselReact writings={writings} client:load />
+<div class="h-full min-h-0 max-layout:min-h-[350px]">
+  <WritingsCarousel writings={writings} client:load />
+</div>

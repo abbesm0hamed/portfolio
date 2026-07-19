@@ -24,7 +24,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
         <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground px-6">
           Work
         </span>
-        <CarouselControls />
+        <CarouselControls buttonClassName="w-10 h-10" />
       </div>
       <CarouselContent className="flex-1 m-0 h-full">
         {works.map((w) => (

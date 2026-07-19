@@ -1,9 +1,8 @@
 ---
-import WorkCarouselReact from "./carousel.tsx"
+import WorkCarousel from "./carousel.tsx"
 import { works } from "./data"
 ---
 
-<div class="h-full min-h-0">
-  <WorkCarouselReact works={works} client:load />
+<div class="h-full min-h-0 max-layout:min-h-[350px] max-layout:max-h-[350px]">
+  <WorkCarousel works={works} client:load />
 </div>
-

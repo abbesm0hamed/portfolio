@@ -1,14 +1,9 @@
 import { Button } from "@workspace/ui/components/button";
 import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-} from "@workspace/ui/components/button-group";
-import {
   Carousel,
   CarouselContent,
+  CarouselControls,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@workspace/ui/components/carousel";
 import { Icons } from "@workspace/ui/icons";
 
@@ -28,17 +23,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
         <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground px-6">
           Writing
         </span>
-        <ButtonGroup className="[&>[data-slot='carousel-previous']]:static [&>[data-slot='carousel-next']]:static h-10">
-          <CarouselPrevious
-            variant="ghost"
-            className="h-full border-l border-l-border text-muted-foreground hover:text-foreground w-10"
-          />
-          <ButtonGroupSeparator />
-          <CarouselNext
-            variant="ghost"
-            className="h-full text-muted-foreground hover:text-foreground w-10"
-          />
-        </ButtonGroup>
+        <CarouselControls className="flex-row-reverse" />
       </div>
       <CarouselContent className="flex-1 m-0 h-full">
         {writings.map((post) => {
@@ -65,7 +50,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                     {post.desc}
                   </p>
                 </div>
-                <div className="flex flex-col justify-between border-l border-border h-full">
+                <div className="flex flex-col justify-between border-l border-border h-full w-10">
                   <div className="flex flex-col">
                     <a
                       href={chatgptUrl}

@@ -104,10 +104,10 @@ export default function SetupTerminal() {
           href="https://github.com/abbesm0hamed/dofs"
           rel="noopener noreferrer"
           target="_blank"
-          className="flex h-full w-10"
+          className="flex h-10 w-10 border-l border-border items-center justify-center"
         >
           <Button
-            className="h-full w-10 text-muted-foreground hover:text-foreground rounded-none border-l border-l-border"
+            className="h-10 w-10 m-0 p-0 text-muted-foreground hover:text-foreground rounded-none"
             variant="ghost"
           >
             <Icons.GitRepository className="size-4" />
@@ -153,7 +153,7 @@ export default function SetupTerminal() {
           "absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none flex flex-col items-center gap-1.5 text-muted-foreground transition-all duration-300",
           showScrollIndicator
             ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-1",
+            : "opacity-0 translate-y-1"
         )}
       >
         <span className="text-[0.625rem] tracking-[0.25em] uppercase font-mono bg-background/90 px-2 py-1 rounded border border-border backdrop-blur-xs shadow-xs">
