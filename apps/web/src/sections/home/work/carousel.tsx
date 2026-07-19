@@ -24,7 +24,15 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
         <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground px-6">
           Work
         </span>
-        <CarouselControls buttonClassName="w-10 h-10" />
+        <div className="flex items-center">
+          <Button
+            className="h-10 w-10 flex items-center justify-center text-muted-foreground border-l border-l-border hover:bg-muted hover:text-foreground"
+            variant="ghost"
+          >
+            <Icons.Expand className="size-4" />
+          </Button>
+          <CarouselControls buttonClassName="w-10 h-10" />
+        </div>
       </div>
       <CarouselContent className="flex-1 m-0 h-full">
         {works.map((w) => (
@@ -41,14 +49,6 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
                   <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[30ch]">
                     {w.desc}
                   </p>
-                </div>
-                <div className="border-t">
-                  <Button
-                    className="h-10 w-10 flex items-center justify-center text-muted-foreground border-r-border hover:bg-muted hover:text-foreground"
-                    variant="ghost"
-                  >
-                    <Icons.Expand className="size-4" />
-                  </Button>
                 </div>
               </div>
               <div className="h-full overflow-hidden border-l">
