@@ -95,7 +95,7 @@ export default function SetupTerminal() {
   }, []);
 
   return (
-    <div className="h-full flex-1 flex flex-col border-l relative">
+    <div className="h-full flex-1 flex flex-col layout:border-l max-layout:border-t relative">
       <div className="flex justify-between items-center h-10 border-b">
         <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground pl-6">
           Setup
@@ -141,8 +141,10 @@ export default function SetupTerminal() {
             </div>
           ))}
           <div className="flex items-center gap-2 text-muted-foreground/50">
-            <span className="flex items-center justify-center pt-0.5">$</span>
-            <span className="w-2 h-[1em] bg-current animate-blink" />
+            <span className="flex items-center justify-center pt-[0.2rem]">
+              $
+            </span>
+            <span className="w-[0.35rem] h-[1em] bg-current animate-blink" />
           </div>
         </div>
       </div>
@@ -151,7 +153,7 @@ export default function SetupTerminal() {
           "absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none flex flex-col items-center gap-1.5 text-muted-foreground transition-all duration-300",
           showScrollIndicator
             ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-1"
+            : "opacity-0 translate-y-1",
         )}
       >
         <span className="text-[0.625rem] tracking-[0.25em] uppercase font-mono bg-background/90 px-2 py-1 rounded border border-border backdrop-blur-xs shadow-xs">
