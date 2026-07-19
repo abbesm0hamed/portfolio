@@ -46,7 +46,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
                   <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none">
                     {w.title}
                   </span>
-                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[30ch]">
+                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[35ch]">
                     {w.desc}
                   </p>
                 </div>
