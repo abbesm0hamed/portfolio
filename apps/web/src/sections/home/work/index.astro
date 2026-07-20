@@ -1,6 +1,20 @@
 ---
+import { getCollection } from "astro:content";
 import WorkCarousel from "./carousel.tsx"
-import { works } from "./data"
+
+const workEntries = await getCollection("work");
+const works = workEntries.map((entry, i) => ({
+  desc: entry.data.description,
+  images: entry.data.images,
+  num: String(i + 1).padStart(2, "0"),
+  repo: entry.data.repo,
+  role: entry.data.role,
+  slug: entry.id,
+  stack: entry.data.stack,
+  title: entry.data.title,
+  url: entry.data.url,
+  year: entry.data.year,
+}));
 ---
 
 <div class="h-full min-h-0 max-layout:min-h-[350px] max-layout:max-h-[550px]">

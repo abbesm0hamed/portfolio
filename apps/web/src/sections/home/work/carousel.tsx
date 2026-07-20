@@ -1,4 +1,3 @@
-import { Button } from "@workspace/ui/components/button";
 import {
   Carousel,
   CarouselContent,
@@ -7,8 +6,20 @@ import {
 } from "@workspace/ui/components/carousel";
 import { Icons } from "@workspace/ui/icons";
 
-import type { Work } from "./data";
 import WorkImages from "./work-images";
+
+interface Work {
+  desc: string;
+  slug: string;
+  images: string[];
+  title: string;
+  num: string;
+  role: string;
+  stack: string;
+  year: string;
+  repo?: string;
+  url?: string;
+}
 
 interface WorkCarouselProps {
   works: Work[];
@@ -26,19 +37,22 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
           Work
         </span>
         <div className="flex items-center">
-          <Button
+          <a
+            href={`/work/${works[0]?.slug}`}
             className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:bg-muted hover:text-foreground"
-            variant="ghost"
           >
-            <Icons.Expand className="size-4" />
-          </Button>
+            <Icons.ArrowUpRight className="size-4" />
+          </a>
           <CarouselControls buttonClassName="w-control h-control" />
         </div>
       </div>
       <CarouselContent className="flex-1 m-0 h-full">
         {works.map((w) => (
           <CarouselItem key={w.slug} className="p-0">
-            <div className="flex flex-col layout:grid layout:grid-cols-[40%_60%] h-full">
+            <a
+              href={`/work/${w.slug}`}
+              className="flex flex-col layout:grid layout:grid-cols-[40%_60%] h-full hover:bg-muted/30 transition-colors"
+            >
               <div className="flex flex-col justify-between layout:h-full flex-1">
                 <div className="flex flex-col gap-4 pt-6 pl-6">
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
@@ -67,7 +81,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
                   )}
                 </div>
               </div>
-            </div>
+            </a>
           </CarouselItem>
         ))}
       </CarouselContent>

@@ -1,0 +1,143 @@
+---
+import { getCollection, render } from "astro:content";
+import { Icons } from "@workspace/ui/icons";
+import Layout from "@/layouts/main.astro";
+
+export async function getStaticPaths() {
+  const works = await getCollection("work");
+  return works.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+
+if (!entry) {throw new Error("Work not found");}
+
+const { Content } = await render(entry);
+const { title, year, role, stack, repo, images } = entry.data;
+---
+
+<Layout>
+  <div
+    class="h-full overflow-y-auto [scrollbar-width:none]"
+    transition:animate="slide"
+  >
+    <div class="max-w-4xl mx-auto px-6 py-8 space-y-10">
+      <a
+        href="/"
+        class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border border-border"
+      >
+        <Icons.ChevronLeft className="size-4" />
+      </a>
+
+      <div>
+        <h1
+          class="text-[clamp(1.5rem,4vw,3rem)] font-bold tracking-[0.08em] leading-none mb-4"
+          transition:name={`work-${entry.id}`}
+        >
+          {title}
+        </h1>
+
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
+          <span>{year}</span>
+          <span>{role}</span>
+          <span>{stack}</span>
+        </div>
+      </div>
+
+      {
+        images.length > 0 && (
+          <div class="flex flex-col gap-4">
+            {images.map((src, i) => (
+              <img
+                src={src}
+                alt={`${title} ${i + 1}`}
+                class="w-full object-cover border border-border"
+              />
+            ))}
+          </div>
+        )
+      }
+
+      <div class="prose max-w-prose">
+        <Content />
+      </div>
+
+      {
+        repo && (
+          <a
+            href={repo}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border border-border px-4 py-2"
+          >
+            <Icons.GitRepository className="size-4" />
+            View on GitHub
+          </a>
+        )
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .prose :global(h2) {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose :global(h3) {
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .prose :global(ul) {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.25rem;
+    line-height: 1.75;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .prose :global(strong) {
+    font-weight: 600;
+  }
+
+  .prose :global(code) {
+    font-size: 0.875em;
+    background: hsl(var(--muted));
+    padding: 0.125rem 0.375rem;
+  }
+
+  .prose :global(pre) {
+    background: hsl(var(--muted));
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .prose :global(a) {
+    color: hsl(var(--foreground));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
