@@ -1,23 +1,20 @@
 import { Button } from "@workspace/ui/components/button";
 import { Icons } from "@workspace/ui/icons";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { ThemeProvider } from "@/sections/theme-provider";
-
-const ThemeToggleButton = () => {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+export const ThemeToggle = () => {
+  const [isDark, setIsDark] = useState(false);
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
-    setMounted(true);
+    setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  const isDark = mounted && resolvedTheme === "dark";
-
   const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
+    const next = !isDark;
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+    setIsDark(next);
     setRotation((r) => r + 180);
   };
 
@@ -38,9 +35,3 @@ const ThemeToggleButton = () => {
     </Button>
   );
 };
-
-export const ThemeToggle = () => (
-  <ThemeProvider>
-    <ThemeToggleButton />
-  </ThemeProvider>
-);

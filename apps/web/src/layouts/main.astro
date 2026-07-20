@@ -1,23 +1,35 @@
 ---
-import { ClientRouter } from "astro:transitions";
+import { ClientRouter, fade } from "astro:transitions";
 import Header from "@/sections/header.astro"
 import Footer from "@/sections/footer.astro"
 import "@workspace/ui/globals.css"
+
+const fadeIn = fade({ duration: "0.3s" });
 ---
 
-<html lang="en" class="h-full overflow-hidden" transition:animate="none" suppressHydrationWarning>
+<html lang="en" class="h-full overflow-hidden" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Abbes</title>
     <ClientRouter />
+    <script is:inline>
+      function applyTheme() {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isDark = stored === "dark" || (!stored && prefersDark);
+        document.documentElement.classList.toggle("dark", isDark);
+      }
+      document.addEventListener("astro:after-swap", applyTheme);
+      applyTheme();
+    </script>
   </head>
   <body class="h-screen flex flex-col overflow-hidden bg-background text-foreground">
     <Header transition:persist />
     <div class="flex-1 min-h-0">
       <div class="container h-full min-h-0">
-        <div class="border-x h-full min-h-0 overflow-hidden" transition:animate="slide">
+        <div class="border-x h-full min-h-0 overflow-hidden" transition:animate={fadeIn}>
           <slot />
         </div>
       </div>
