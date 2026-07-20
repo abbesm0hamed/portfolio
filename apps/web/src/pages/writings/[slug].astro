@@ -28,16 +28,40 @@ const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(promptText)}`;
 <Layout>
   <div
     class="h-full overflow-y-auto [scrollbar-width:none]"
+    id="main-scroll"
   >
-    <div class="max-w-3xl mx-auto px-6 py-8 space-y-10">
-      <a
-        href="/"
-        class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border border-border"
-      >
-        <Icons.ChevronLeft className="size-4" />
-      </a>
+    <div class="max-w-3xl mx-auto py-8 space-y-10 border-x">
+      <div class="flex justify-between border-y">
+        <a
+          href="/"
+          class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border-r border-r-border"
+        >
+          <Icons.ChevronLeft className="size-4" />
+        </a>
 
-      <div>
+        <div class="flex">
+          <a
+            href={chatgptUrl}
+            target="_blank"
+            rel="noopener"
+            title="Summarize with ChatGPT"
+            class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors border-l border-l-border"
+          >
+            <Icons.OpenAI className="size-4" />
+          </a>
+          <a
+            href={claudeUrl}
+            target="_blank"
+            rel="noopener"
+            title="Summarize with Claude"
+            class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors border-l border-l-border"
+          >
+            <Icons.Claude className="size-4" />
+          </a>
+        </div>
+      </div>
+
+      <div class="border-y">
         <h1
           class="text-[clamp(1.5rem,4vw,3rem)] font-bold tracking-[0.08em] leading-none mb-4"
         >
@@ -47,27 +71,6 @@ const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(promptText)}`;
         <span class="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
           {date} — Post
         </span>
-      </div>
-
-      <div class="flex gap-2">
-        <a
-          href={chatgptUrl}
-          target="_blank"
-          rel="noopener"
-          title="Summarize with ChatGPT"
-          class="h-control w-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border border-border"
-        >
-          <Icons.OpenAI className="size-4" />
-        </a>
-        <a
-          href={claudeUrl}
-          target="_blank"
-          rel="noopener"
-          title="Summarize with Claude"
-          class="h-control w-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border border-border"
-        >
-          <Icons.Claude className="size-4" />
-        </a>
       </div>
 
       <div class="prose max-w-prose">
