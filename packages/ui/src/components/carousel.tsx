@@ -265,7 +265,10 @@ const CarouselControls = ({
     orientation === "horizontal" ? <ChevronLeft /> : <ChevronUp />;
 
   return (
-    <div data-slot="carousel-controls" className={cn("flex h-control", className)}>
+    <div
+      data-slot="carousel-controls"
+      className={cn("flex h-control", className)}
+    >
       <Button
         data-slot="carousel-controls-next"
         variant="ghost"

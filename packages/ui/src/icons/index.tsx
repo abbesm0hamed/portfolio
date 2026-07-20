@@ -9,6 +9,7 @@ import {
 } from "@remixicon/react";
 import {
   ArrowDown,
+  ArrowUpRight,
   ArrowUp,
   Check,
   ChevronDown,
@@ -24,6 +25,7 @@ import {
 export const Icons = {
   ArrowDown,
   ArrowUp,
+  ArrowUpRight,
   CalendarEvent: RiCalendarEventLine,
   Check,
   ChevronDown,
