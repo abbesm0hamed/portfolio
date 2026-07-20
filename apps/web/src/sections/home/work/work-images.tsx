@@ -16,7 +16,7 @@ function Controls() {
       <Button
         variant="ghost"
         size="icon-sm"
-        className="h-control w-control rounded-none border-b border-b-border border-l border-l-border text-muted-foreground bg-surface backdrop-blur-sm hover:text-foreground hover:bg-background/90"
+        className="h-control w-control rounded-none border-t-0 border-r-0 border-b border-b-border border-l border-l-border text-muted-foreground bg-surface backdrop-blur-sm hover:text-foreground hover:bg-background/90"
         disabled={!canScrollPrev}
         onClick={scrollPrev}
         aria-label="Previous slide"
@@ -26,7 +26,7 @@ function Controls() {
       <Button
         variant="ghost"
         size="icon-sm"
-        className="h-control w-control rounded-none border-l border-b border-b-border border-l-border text-muted-foreground bg-surface backdrop-blur-sm hover:text-foreground hover:bg-background/90"
+        className="h-control w-control rounded-none border-t-0 border-r-0 border-b border-b-border border-l border-l-border text-muted-foreground bg-surface backdrop-blur-sm hover:text-foreground hover:bg-background/90"
         disabled={!canScrollNext}
         onClick={scrollNext}
         aria-label="Next slide"

@@ -22,20 +22,34 @@ const { title, year, role, stack, repo, images } = entry.data;
 <Layout>
   <div
     class="h-full overflow-y-auto [scrollbar-width:none]"
-    transition:animate="slide"
+    id="main-scroll"
   >
-    <div class="max-w-4xl mx-auto px-6 py-8 space-y-10">
-      <a
-        href="/"
-        class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border border-border"
-      >
-        <Icons.ChevronLeft className="size-4" />
-      </a>
+    <div class="max-w-4xl mx-auto py-8 space-y-10 border-x">
+      <div class="flex justify-between border-y">
+        <a
+          href="/"
+          class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors border-r border-r-border"
+        >
+          <Icons.ChevronLeft className="size-4" />
+        </a>
 
-      <div>
+        {
+          repo && (
+            <a
+              href={repo}
+              target="_blank"
+              rel="noopener"
+              class="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors border-l border-l-border"
+            >
+              <Icons.GitRepository className="size-4" />
+            </a>
+          )
+        }
+      </div>
+
+      <div class="border-y">
         <h1
           class="text-[clamp(1.5rem,4vw,3rem)] font-bold tracking-[0.08em] leading-none mb-4"
-          transition:name={`work-${entry.id}`}
         >
           {title}
         </h1>
@@ -64,20 +78,6 @@ const { title, year, role, stack, repo, images } = entry.data;
       <div class="prose max-w-prose">
         <Content />
       </div>
-
-      {
-        repo && (
-          <a
-            href={repo}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border border-border px-4 py-2"
-          >
-            <Icons.GitRepository className="size-4" />
-            View on GitHub
-          </a>
-        )
-      }
     </div>
   </div>
 </Layout>

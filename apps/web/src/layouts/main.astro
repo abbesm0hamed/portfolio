@@ -5,7 +5,7 @@ import Footer from "@/sections/footer.astro"
 import "@workspace/ui/globals.css"
 ---
 
-<html lang="en" class="h-full overflow-hidden" suppressHydrationWarning>
+<html lang="en" class="h-full overflow-hidden" transition:animate="none" suppressHydrationWarning>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -14,14 +14,14 @@ import "@workspace/ui/globals.css"
     <ClientRouter />
   </head>
   <body class="h-screen flex flex-col overflow-hidden bg-background text-foreground">
-    <Header />
+    <Header transition:persist />
     <div class="flex-1 min-h-0">
       <div class="container h-full min-h-0">
-        <div class="border-x h-full min-h-0 overflow-hidden">
+        <div class="border-x h-full min-h-0 overflow-hidden" transition:animate="slide">
           <slot />
         </div>
       </div>
     </div>
-    <Footer />
+    <Footer transition:persist />
   </body>
 </html>
