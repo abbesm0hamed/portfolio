@@ -1,4 +1,5 @@
 import {
+  RiCalendarEventLine,
   RiGithubLine,
   RiGitRepositoryLine,
   RiLinkedinLine,
@@ -21,6 +22,7 @@ import {
 export const Icons = {
   ArrowDown,
   ArrowUp,
+  CalendarEvent: RiCalendarEventLine,
   Check,
   ChevronDown,
   ChevronUp,

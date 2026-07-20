@@ -1,4 +1,5 @@
 ---
+import { CalCom } from "@/sections/cal-com"
 import { CopyEmail } from "@/sections/copy-email"
 import { ThemeToggle } from "@/sections/theme-toggle"
 ---
@@ -12,7 +13,7 @@ import { ThemeToggle } from "@/sections/theme-toggle"
   <div class="h-10 border-b">
     <div class="h-full container">
       <div class="h-full border-x flex justify-between">
-        <!-- <CopyEmail client:load /> -->
+        <CalCom client:load />
         <div class="flex-1 bg-grain" />
         <ThemeToggle client:load />
       </div>
