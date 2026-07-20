@@ -39,7 +39,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
         <div className="flex items-center">
           <a
             href={`/writings/${writings[0]?.slug}`}
-            className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:bg-muted hover:text-foreground"
+            className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:text-foreground"
           >
             <Icons.ArrowUpRight className="size-4" />
           </a>

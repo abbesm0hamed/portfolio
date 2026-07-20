@@ -67,8 +67,8 @@ function WorkSlide({ work }: { work: Work }) {
         </div>
       </div>
 
-      <div className="min-h-0 overflow-hidden layout:h-full layout:border-l">
-        <div className="relative size-full overflow-hidden max-layout:border-t">
+      <div className="min-h-0 overflow-hidden layout:h-full layout:border-l max-layout:border-t">
+        <div className="relative size-full overflow-hidden">
           {hasMultipleImages ? (
             <WorkImages
               images={work.images}
