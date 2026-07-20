@@ -47,13 +47,21 @@ function WorkSlide({ work }: { work: Work }) {
           </p>
         </div>
         <div className="flex h-control w-full shrink-0 border-t border-t-border">
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            className="h-control w-control border-r border-r-border text-muted-foreground hover:text-foreground"
-          >
-            <Icons.Gallery className="size-4" />
-          </Button>
+          {work.repo ? (
+            <a
+              href={work.repo}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="flex h-control w-control items-center justify-center border-r border-r-border"
+            >
+              <Button
+                className="h-control w-control m-0 p-0 text-muted-foreground hover:text-foreground rounded-none"
+                variant="ghost"
+              >
+                <Icons.GitRepository className="size-4" />
+              </Button>
+            </a>
+          ) : null}
           <div className="flex-1" />
           {hasMultipleImages ? <ImageControls api={imageApi} /> : null}
         </div>
