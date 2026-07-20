@@ -8,6 +8,7 @@ import {
 import { Icons } from "@workspace/ui/icons";
 
 import type { Work } from "./data";
+import WorkImages from "./work-images";
 
 interface WorkCarouselProps {
   works: Work[];
@@ -51,12 +52,18 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
                   </p>
                 </div>
               </div>
-              <div className="h-full overflow-hidden border-l">
-                <img
-                  alt={w.title}
-                  className="h-full w-full object-cover"
-                  src={w.image}
-                />
+              <div className="h-full overflow-hidden border-l relative">
+                {w.images.length > 1 ? (
+                  <div className="size-full">
+                    <WorkImages images={w.images} title={w.title} />
+                  </div>
+                ) : (
+                  <img
+                    alt={w.title}
+                    className="h-full w-full object-cover"
+                    src={w.images[0]}
+                  />
+                )}
               </div>
             </div>
           </CarouselItem>

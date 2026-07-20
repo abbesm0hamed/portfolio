@@ -1,7 +1,7 @@
 export interface Work {
   desc: string;
   slug: string;
-  image: string;
+  images: string[];
   title: string;
   num: string;
   role: string;
@@ -12,7 +12,7 @@ export interface Work {
 export const works: Work[] = [
   {
     desc: "A short description of what this work does and why it matters.",
-    image: "/images/work/work-01.jpg",
+    images: ["/images/work/work-01.jpg", "/images/work/work-01.jpg"],
     num: "01",
     role: "Full-Stack",
     slug: "work-01",
@@ -22,7 +22,7 @@ export const works: Work[] = [
   },
   {
     desc: "Another work, different scope, same attention to detail.",
-    image: "/images/work/work-02.jpg",
+    images: ["/images/work/work-02.jpg"],
     num: "02",
     role: "Frontend",
     slug: "work-02",
@@ -32,7 +32,7 @@ export const works: Work[] = [
   },
   {
     desc: "The one that taught me the most. Full-stack, end to end.",
-    image: "/images/work/work-03.jpg",
+    images: ["/images/work/work-03.jpg"],
     num: "03",
     role: "Backend",
     slug: "work-03",
