@@ -19,6 +19,7 @@ import {
   Download,
   Envelope,
   Expand,
+  GalleryWide,
   DarkLight,
 } from "reicon-react";
 
@@ -35,6 +36,7 @@ export const Icons = {
   Claude: RiClaudeFill,
   Download,
   Expand,
+  Gallery: GalleryWide,
   GitRepository: RiGitRepositoryLine,
   Github: RiGithubLine,
   Linkedin: RiLinkedinLine,

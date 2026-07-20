@@ -1,3 +1,4 @@
+import { Button } from "@workspace/ui/components/button";
 import {
   Carousel,
   CarouselContent,
@@ -45,8 +46,15 @@ function WorkSlide({ work }: { work: Work }) {
             {work.desc}
           </p>
         </div>
-        <div className="flex h-control w-full shrink-0 justify-between border-t border-t-border">
-          <div>logos marquee</div>
+        <div className="flex h-control w-full shrink-0 border-t border-t-border">
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            className="h-control w-control border-r border-r-border text-muted-foreground hover:text-foreground"
+          >
+            <Icons.Gallery className="size-4" />
+          </Button>
+          <div className="flex-1" />
           {hasMultipleImages ? <ImageControls api={imageApi} /> : null}
         </div>
       </div>
