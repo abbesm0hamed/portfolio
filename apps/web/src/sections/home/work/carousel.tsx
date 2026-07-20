@@ -4,9 +4,11 @@ import {
   CarouselControls,
   CarouselItem,
 } from "@workspace/ui/components/carousel";
+import type { CarouselApi } from "@workspace/ui/components/carousel";
 import { Icons } from "@workspace/ui/icons";
+import { useState } from "react";
 
-import WorkImages from "./work-images";
+import WorkImages, { ImageControls } from "./work-images";
 
 interface Work {
   desc: string;
@@ -25,63 +27,91 @@ interface WorkCarouselProps {
   works: Work[];
 }
 
+function WorkSlide({ work }: { work: Work }) {
+  const [imageApi, setImageApi] = useState<CarouselApi>();
+  const hasMultipleImages = work.images.length > 1;
+
+  return (
+    // max-layout: copy+footer share a shrinkable row (desc scrolls if long);
+    // image keeps minmax(14rem, 1.2fr) so it never collapses.
+    // layout+: 40/60 columns; same scroll/footer pin behavior in the left col.
+    <div className="grid size-full min-h-0 grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[40%_60%] layout:grid-rows-1">
+      <div className="flex min-h-0 flex-col overflow-hidden layout:h-full">
+        <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
+          <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
+            {work.year} — {work.role} — {work.stack}
+          </span>
+          <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[27ch] layout:max-w-[32ch]">
+            {work.title}
+          </span>
+          <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[27ch] layout:max-w-[32ch]">
+            {work.desc}
+          </p>
+        </div>
+        <div className="flex h-control w-full shrink-0 justify-between border-t border-t-border">
+          <div>logos marquee</div>
+          {hasMultipleImages ? <ImageControls api={imageApi} /> : null}
+        </div>
+      </div>
+
+      <div className="min-h-0 overflow-hidden layout:h-full layout:border-l">
+        <div className="relative size-full overflow-hidden max-layout:border-t">
+          {hasMultipleImages ? (
+            <WorkImages
+              images={work.images}
+              title={work.title}
+              setApi={setImageApi}
+            />
+          ) : (
+            <img
+              alt={work.title}
+              className="size-full object-cover"
+              src={work.images[0]}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function WorkCarousel({ works }: WorkCarouselProps) {
   return (
     <Carousel
       orientation="vertical"
       opts={{ align: "start", dragFree: true, loop: true, watchDrag: false }}
-      className="h-full flex-1 flex flex-col border-b"
+      className="flex h-full min-h-0 flex-1 flex-col border-b"
     >
-      <div className="flex justify-between items-center h-control border-b">
-        <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground px-6">
+      <div className="flex h-control shrink-0 items-center justify-between border-b">
+        <span className="px-6 text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground">
           Work
         </span>
         <div className="flex items-center">
           <a
             href={`/work/${works[0]?.slug}`}
-            className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:bg-muted hover:text-foreground"
+            className="flex h-control w-control items-center justify-center border-l border-l-border text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <Icons.ArrowUpRight className="size-4" />
           </a>
-          <CarouselControls buttonClassName="w-control h-control" />
+          <CarouselControls buttonClassName="h-control w-control" />
         </div>
       </div>
-      <CarouselContent className="flex-1 m-0 h-full">
-        {works.map((w) => (
-          <CarouselItem key={w.slug} className="p-0">
-            <div className="flex flex-col layout:grid layout:grid-cols-[40%_60%] h-full">
-              <div className="flex flex-col justify-between layout:h-full flex-1">
-                <div className="flex flex-col gap-4 pt-6 pl-6">
-                  <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                    {w.year} — {w.role} — {w.stack}
-                  </span>
-                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[27ch] layout:max-w-[32ch]">
-                    {w.title}
-                  </span>
-                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[27ch] layout:max-w-[32ch]">
-                    {w.desc}
-                  </p>
-                </div>
+
+      <div className="min-h-0 flex-1">
+        <CarouselContent className="m-0 h-full">
+          {works.map((w) => (
+            <CarouselItem key={w.slug} className="relative min-h-0 p-0">
+              {/*
+                Embla sizes the item via flex-basis; percentage heights inside
+                are unreliable. Fill the slide with absolute inset instead.
+              */}
+              <div className="absolute inset-0">
+                <WorkSlide work={w} />
               </div>
-              <div className="flex flex-col flex-1 min-h-0 layout:h-full layout:border-l overflow-hidden">
-                <div className="flex-1 min-h-0 overflow-hidden relative max-layout:border-t">
-                  {w.images.length > 1 ? (
-                    <div className="size-full">
-                      <WorkImages images={w.images} title={w.title} />
-                    </div>
-                  ) : (
-                    <img
-                      alt={w.title}
-                      className="h-full w-full object-cover"
-                      src={w.images[0]}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </div>
     </Carousel>
   );
 }
