@@ -38,32 +38,34 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
       <CarouselContent className="flex-1 m-0 h-full">
         {works.map((w) => (
           <CarouselItem key={w.slug} className="p-0">
-            <div className="grid grid-cols-[40%_60%] h-full">
-              <div className="flex flex-col justify-between h-full">
+            <div className="flex flex-col layout:grid layout:grid-cols-[40%_60%] h-full">
+              <div className="flex flex-col justify-between layout:h-full flex-1">
                 <div className="flex flex-col gap-4 pt-6 pl-6">
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {w.year} — {w.role} — {w.stack}
                   </span>
-                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none">
+                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[27ch] layout:max-w-[32ch]">
                     {w.title}
                   </span>
-                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[35ch]">
+                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[27ch] layout:max-w-[32ch]">
                     {w.desc}
                   </p>
                 </div>
               </div>
-              <div className="h-full overflow-hidden border-l relative">
-                {w.images.length > 1 ? (
-                  <div className="size-full">
-                    <WorkImages images={w.images} title={w.title} />
-                  </div>
-                ) : (
-                  <img
-                    alt={w.title}
-                    className="h-full w-full object-cover"
-                    src={w.images[0]}
-                  />
-                )}
+              <div className="flex flex-col flex-1 min-h-0 layout:h-full layout:border-l overflow-hidden">
+                <div className="flex-1 min-h-0 overflow-hidden relative max-layout:border-t">
+                  {w.images.length > 1 ? (
+                    <div className="size-full">
+                      <WorkImages images={w.images} title={w.title} />
+                    </div>
+                  ) : (
+                    <img
+                      alt={w.title}
+                      className="h-full w-full object-cover"
+                      src={w.images[0]}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </CarouselItem>
