@@ -56,7 +56,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
           return (
             <CarouselItem key={post.slug} className="p-0">
               <div className="flex flex-row justify-between h-full">
-                <div className="flex flex-1 flex-col gap-4 p-6">
+                <div className="flex flex-1 flex-col gap-4 p-6 overflow-y-auto">
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {post.date} — Post
                   </span>

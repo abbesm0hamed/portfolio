@@ -32,9 +32,6 @@ function WorkSlide({ work }: { work: Work }) {
   const hasMultipleImages = work.images.length > 1;
 
   return (
-    // max-layout: copy+footer share a shrinkable row (desc scrolls if long);
-    // image keeps minmax(14rem, 1.2fr) so it never collapses.
-    // layout+: 40/60 columns; same scroll/footer pin behavior in the left col.
     <div className="grid size-full min-h-0 grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[40%_60%] layout:grid-rows-1">
       <div className="flex min-h-0 flex-col overflow-hidden layout:h-full">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
