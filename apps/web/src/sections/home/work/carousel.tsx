@@ -49,10 +49,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
       <CarouselContent className="flex-1 m-0 h-full">
         {works.map((w) => (
           <CarouselItem key={w.slug} className="p-0">
-            <a
-              href={`/work/${w.slug}`}
-              className="flex flex-col layout:grid layout:grid-cols-[40%_60%] h-full hover:bg-muted/30 transition-colors"
-            >
+            <div className="flex flex-col layout:grid layout:grid-cols-[40%_60%] h-full">
               <div className="flex flex-col justify-between layout:h-full flex-1">
                 <div className="flex flex-col gap-4 pt-6 pl-6">
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
@@ -81,7 +78,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
                   )}
                 </div>
               </div>
-            </a>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>

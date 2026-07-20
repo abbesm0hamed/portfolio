@@ -55,10 +55,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
 
           return (
             <CarouselItem key={post.slug} className="p-0">
-              <a
-                href={`/writings/${post.slug}`}
-                className="flex flex-row justify-between h-full hover:bg-muted/30 transition-colors"
-              >
+              <div className="flex flex-row justify-between h-full">
                 <div className="flex flex-col gap-4 pt-6 pl-6">
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {post.date} — Post
@@ -91,11 +88,14 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                       <Icons.Claude className="size-4" />
                     </a>
                   </div>
-                  <div className="h-control w-control border-t border-t-border flex items-center justify-center text-muted-foreground">
+                  <a
+                    href={`/writings/${post.slug}`}
+                    className="h-control w-control border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
                     <Icons.ArrowUpRight className="size-4" />
-                  </div>
+                  </a>
                 </div>
-              </a>
+              </div>
             </CarouselItem>
           );
         })}
