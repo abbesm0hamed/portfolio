@@ -19,7 +19,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
       opts={{ align: "start", loop: true }}
       className="h-full flex-1 flex flex-col"
     >
-      <div className="flex justify-between items-center h-10 border-b">
+      <div className="flex justify-between items-center h-control border-b">
         <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground px-6">
           Writing
         </span>
@@ -43,14 +43,14 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {post.date} — Post
                   </span>
-                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[40ch]">
+                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[25ch] md:layout:max-w-[40ch]">
                     {post.title}
                   </span>
-                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[50ch]">
+                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[25ch] md:layout:max-w-[40ch]">
                     {post.desc}
                   </p>
                 </div>
-                <div className="flex flex-col justify-between border-l border-border h-full w-10">
+                <div className="flex flex-col justify-between border-l border-border h-full w-control">
                   <div className="flex flex-col">
                     <a
                       href={chatgptUrl}
@@ -59,7 +59,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                       title="Summarize with ChatGPT"
                     >
                       <Button
-                        className="h-10 w-10 border-b border-b-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                        className="h-control w-control border-b border-b-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
                         variant="ghost"
                       >
                         <Icons.OpenAI className="size-4" />
@@ -72,7 +72,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                       title="Summarize with Claude"
                     >
                       <Button
-                        className="h-10 w-10 border-b border-b-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                        className="h-control w-control border-b border-b-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
                         variant="ghost"
                       >
                         <Icons.Claude className="size-4" />
@@ -80,7 +80,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                     </a>
                   </div>
                   <Button
-                    className="h-10 w-10 border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+                    className="h-control w-control border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
                     variant="ghost"
                   >
                     <Icons.Expand className="size-4" />

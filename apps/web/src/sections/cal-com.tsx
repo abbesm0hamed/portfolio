@@ -7,7 +7,7 @@ export const CalCom = () => (
   <Button
     variant="ghost"
     aria-label="Schedule a meeting"
-    className="h-full w-10 border-r border-r-border text-muted-foreground hover:text-foreground"
+    className="h-full w-control border-r border-r-border text-muted-foreground hover:text-foreground"
     render={<a href={CALCOM_URL} target="_blank" rel="noopener noreferrer" />}
   >
     <Icons.CalendarEvent />

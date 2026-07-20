@@ -30,7 +30,7 @@ export const SocialBar = () => (
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="flex items-center justify-center h-full w-10 px-2 text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center justify-center h-full w-control px-2 text-muted-foreground hover:text-foreground transition-colors"
         >
           <Icon className="w-4 h-4" />
         </a>

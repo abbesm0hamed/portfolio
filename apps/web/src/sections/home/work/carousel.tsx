@@ -21,18 +21,18 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
       opts={{ align: "start", dragFree: true, loop: true, watchDrag: false }}
       className="h-full flex-1 flex flex-col border-b"
     >
-      <div className="flex justify-between items-center h-10 border-b">
+      <div className="flex justify-between items-center h-control border-b">
         <span className="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground px-6">
           Work
         </span>
         <div className="flex items-center">
           <Button
-            className="h-10 w-10 flex items-center justify-center text-muted-foreground border-l border-l-border hover:bg-muted hover:text-foreground"
+            className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:bg-muted hover:text-foreground"
             variant="ghost"
           >
             <Icons.Expand className="size-4" />
           </Button>
-          <CarouselControls buttonClassName="w-10 h-10" />
+          <CarouselControls buttonClassName="w-control h-control" />
         </div>
       </div>
       <CarouselContent className="flex-1 m-0 h-full">

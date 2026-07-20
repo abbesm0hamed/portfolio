@@ -43,7 +43,7 @@ export default function SetupTerminal({ items }: SetupTerminalProps) {
 
   return (
     <div className="h-full flex-1 flex flex-col layout:border-l max-layout:border-t relative">
-      <div className="flex justify-between items-center h-10 border-b">
+      <div className="flex justify-between items-center h-control border-b">
         <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground pl-6">
           Setup
         </span>
@@ -51,10 +51,10 @@ export default function SetupTerminal({ items }: SetupTerminalProps) {
           href="https://github.com/abbesm0hamed/dofs"
           rel="noopener noreferrer"
           target="_blank"
-          className="flex h-10 w-10 border-l border-border items-center justify-center"
+          className="flex h-control w-control border-l border-border items-center justify-center"
         >
           <Button
-            className="h-10 w-10 m-0 p-0 text-muted-foreground hover:text-foreground rounded-none"
+            className="h-control w-control m-0 p-0 text-muted-foreground hover:text-foreground rounded-none"
             variant="ghost"
           >
             <Icons.GitRepository className="size-4" />

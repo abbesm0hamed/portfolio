@@ -52,5 +52,5 @@ export const MarqueeFade = ({
 export type MarqueeItemProps = HTMLAttributes<HTMLDivElement>;
 
 export const MarqueeItem = ({ className, ...props }: MarqueeItemProps) => (
-  <div className={cn("mx-2 flex-shrink-0 h-10 w-10", className)} {...props} />
+  <div className={cn("mx-2 flex-shrink-0 h-control w-control", className)} {...props} />
 );

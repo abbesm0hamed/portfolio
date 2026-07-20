@@ -265,13 +265,13 @@ const CarouselControls = ({
     orientation === "horizontal" ? <ChevronLeft /> : <ChevronUp />;
 
   return (
-    <div data-slot="carousel-controls" className={cn("flex h-10", className)}>
+    <div data-slot="carousel-controls" className={cn("flex h-control", className)}>
       <Button
         data-slot="carousel-controls-next"
         variant="ghost"
         size="icon-sm"
         className={cn(
-          "h-full w-10 rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
+          "h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
           buttonClassName
         )}
         disabled={!canScrollNext}
@@ -285,7 +285,7 @@ const CarouselControls = ({
         variant="ghost"
         size="icon-sm"
         className={cn(
-          "h-full w-10 rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
+          "h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
           buttonClassName
         )}
         disabled={!canScrollPrev}

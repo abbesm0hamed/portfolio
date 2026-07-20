@@ -127,6 +127,7 @@
     "Courier New", monospace;
   --animate-blink: blink 1s step-end infinite;
   --breakpoint-layout: 1280px;
+  --spacing-control: 2.5rem;
 }
 
 @keyframes blink {
@@ -150,6 +151,36 @@
 
   @variant dark {
     background-image: url("/gggrain-dark.svg");
+  }
+}
+
+@utility corner-covers {
+  /* Parent element needs position: relative */
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    --corner-color: var(--border);
+    --corner-l: 1rem;
+  }
+
+  &::before {
+    background:
+      linear-gradient(to bottom right, var(--corner-color) 50%, transparent 50%)
+        top left / var(--corner-l) var(--corner-l) no-repeat,
+      linear-gradient(to bottom left, var(--corner-color) 50%, transparent 50%)
+        top right / var(--corner-l) var(--corner-l) no-repeat;
+  }
+
+  &::after {
+    background:
+      linear-gradient(to top right, var(--corner-color) 50%, transparent 50%)
+        bottom left / var(--corner-l) var(--corner-l) no-repeat,
+      linear-gradient(to top left, var(--corner-color) 50%, transparent 50%)
+        bottom right / var(--corner-l) var(--corner-l) no-repeat;
   }
 }
 

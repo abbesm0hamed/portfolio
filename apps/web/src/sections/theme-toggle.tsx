@@ -27,7 +27,7 @@ const ThemeToggleButton = () => {
       variant="ghost"
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       onClick={toggleTheme}
-      className="h-full w-10 border-l border-l-border text-muted-foreground hover:text-foreground"
+      className="h-full w-control border-l border-l-border text-muted-foreground hover:text-foreground"
     >
       <span
         className="inline-block transition-transform duration-500 ease-in-out"
