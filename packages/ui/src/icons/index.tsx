@@ -21,6 +21,7 @@ import {
   Expand,
   GalleryWide,
   DarkLight,
+  Link5,
 } from "reicon-react";
 
 export const Icons = {
@@ -39,6 +40,7 @@ export const Icons = {
   Gallery: GalleryWide,
   GitRepository: RiGitRepositoryLine,
   Github: RiGithubLine,
+  Link: Link5,
   Linkedin: RiLinkedinLine,
   Mail: Envelope,
   OpenAI: RiOpenaiFill,

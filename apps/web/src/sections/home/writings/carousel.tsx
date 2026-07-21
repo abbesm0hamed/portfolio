@@ -4,6 +4,7 @@ import {
   CarouselControls,
   CarouselItem,
 } from "@workspace/ui/components/carousel";
+import { useCopyToClipboard } from "@workspace/ui/hooks/use-copy-to-clipboard";
 import { Icons } from "@workspace/ui/icons";
 
 interface Writing {
@@ -24,6 +25,25 @@ function rawMdUrl(slug: string) {
       ? (import.meta.env.PUBLIC_SERVER_URL as string)
       : window.location.origin;
   return `${base}/content/writings/${slug}.md`;
+}
+
+function CopyLinkButton({ slug }: { slug: string }) {
+  const { copied, copy } = useCopyToClipboard();
+
+  return (
+    <button
+      type="button"
+      onClick={() => copy(`${window.location.origin}/writings/${slug}`)}
+      aria-label={copied ? "Link copied" : `Copy link to this post`}
+      className="h-control w-control border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+    >
+      {copied ? (
+        <Icons.Check className="size-4" />
+      ) : (
+        <Icons.Link className="size-4" />
+      )}
+    </button>
+  );
 }
 
 export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
@@ -88,12 +108,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                       <Icons.Claude className="size-4" />
                     </a>
                   </div>
-                  <a
-                    href={`/writings/${post.slug}`}
-                    className="h-control w-control border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
-                  >
-                    <Icons.ArrowUpRight className="size-4" />
-                  </a>
+                  <CopyLinkButton slug={post.slug} />
                 </div>
               </div>
             </CarouselItem>
