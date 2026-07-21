@@ -127,7 +127,7 @@
     "Courier New", monospace;
   --animate-blink: blink 1s step-end infinite;
   --breakpoint-layout: 1280px;
-  --spacing-control: 2.5rem;
+  --spacing-control: 2.2rem;
 }
 
 @keyframes blink {
