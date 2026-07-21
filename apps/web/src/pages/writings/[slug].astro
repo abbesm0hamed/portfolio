@@ -2,7 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { Icons } from "@workspace/ui/icons";
 import Layout from "@/layouts/main.astro";
-import { CopyUrl } from "@/sections/copy-url";
+import { CopyUrlBtn } from "@/components/copy-url-btn";
 
 export async function getStaticPaths() {
   const writings = await getCollection("writings");
@@ -59,7 +59,7 @@ const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(promptText)}`;
           >
             <Icons.Claude className="size-4" />
           </a>
-          <CopyUrl
+          <CopyUrlBtn
             client:load
             className="w-control h-control flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors border-l border-l-border"
           />

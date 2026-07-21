@@ -1,3 +1,4 @@
+import { Button } from "@workspace/ui/components/button";
 import {
   Carousel,
   CarouselContent,
@@ -31,18 +32,18 @@ function CopyLinkButton({ slug }: { slug: string }) {
   const { copied, copy } = useCopyToClipboard();
 
   return (
-    <button
-      type="button"
+    <Button
+      variant="ghost"
       onClick={() => copy(`${window.location.origin}/writings/${slug}`)}
       aria-label={copied ? "Link copied" : `Copy link to this post`}
-      className="h-control w-control border-t border-t-border flex items-center justify-center text-muted-foreground hover:bg-muted hover:text-foreground"
+      className="h-control w-control border-t border-t-border text-muted-foreground rounded-none"
     >
       {copied ? (
         <Icons.Check className="size-4" />
       ) : (
         <Icons.Link className="size-4" />
       )}
-    </button>
+    </Button>
   );
 }
 
@@ -59,7 +60,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
         <div className="flex items-center">
           <a
             href={`/writings/${writings[0]?.slug}`}
-            className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:text-foreground"
+            className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:text-foreground hover:bg-muted"
           >
             <Icons.ArrowUpRight className="size-4" />
           </a>
