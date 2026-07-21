@@ -1,5 +1,6 @@
 ---
 import { ClientRouter, fade } from "astro:transitions";
+import PostHog from "@/components/posthog.astro"
 import Header from "@/sections/header.astro"
 import Footer from "@/sections/footer.astro"
 import "@workspace/ui/globals.css"
@@ -14,6 +15,7 @@ const fadeIn = fade({ duration: "0.3s" });
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Abbes</title>
     <ClientRouter />
+    <PostHog />
     <script is:inline>
       function applyTheme() {
         const stored = localStorage.getItem("theme");

@@ -70,17 +70,9 @@ function WorkSlide({ work }: { work: Work }) {
       <div className="min-h-0 overflow-hidden layout:h-full layout:border-l max-layout:border-t">
         <div className="relative size-full overflow-hidden">
           {hasMultipleImages ? (
-            <WorkImages
-              images={work.images}
-              title={work.title}
-              setApi={setImageApi}
-            />
+            <WorkImages images={work.images} title={work.title} setApi={setImageApi} />
           ) : (
-            <img
-              alt={work.title}
-              className="size-full object-cover"
-              src={work.images[0]}
-            />
+            <img alt={work.title} className="size-full object-cover" src={work.images[0]} />
           )}
         </div>
       </div>

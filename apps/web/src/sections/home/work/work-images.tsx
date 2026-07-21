@@ -1,9 +1,5 @@
 import { Button } from "@workspace/ui/components/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@workspace/ui/components/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@workspace/ui/components/carousel";
 import type { CarouselApi } from "@workspace/ui/components/carousel";
 import { Icons } from "@workspace/ui/icons";
 import { useEffect, useState } from "react";
@@ -74,11 +70,7 @@ export default function WorkImages({ images, title, setApi }: WorkImagesProps) {
       <CarouselContent className="m-0 size-full">
         {images.map((src, i) => (
           <CarouselItem key={src} className="p-0 size-full">
-            <img
-              alt={`${title} ${i + 1}`}
-              className="size-full object-cover"
-              src={src}
-            />
+            <img alt={`${title} ${i + 1}`} className="size-full object-cover" src={src} />
           </CarouselItem>
         ))}
       </CarouselContent>

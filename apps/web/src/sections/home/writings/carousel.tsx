@@ -38,21 +38,14 @@ function CopyLinkButton({ slug }: { slug: string }) {
       aria-label={copied ? "Link copied" : `Copy link to this post`}
       className="h-control w-control border-t border-t-border text-muted-foreground rounded-none"
     >
-      {copied ? (
-        <Icons.Check className="size-4" />
-      ) : (
-        <Icons.Link className="size-4" />
-      )}
+      {copied ? <Icons.Check className="size-4" /> : <Icons.Link className="size-4" />}
     </Button>
   );
 }
 
 export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
   return (
-    <Carousel
-      opts={{ align: "start", loop: true }}
-      className="h-full flex-1 flex flex-col"
-    >
+    <Carousel opts={{ align: "start", loop: true }} className="h-full flex-1 flex flex-col">
       <div className="flex justify-between items-center h-control border-b">
         <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground px-6">
           Writing

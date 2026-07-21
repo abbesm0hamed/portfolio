@@ -12,7 +12,7 @@ export function useCopyToClipboard(feedbackMs = DEFAULT_FEEDBACK_MS) {
         clearTimeout(timeoutRef.current);
       }
     },
-    []
+    [],
   );
 
   const copy = useCallback(
@@ -38,7 +38,7 @@ export function useCopyToClipboard(feedbackMs = DEFAULT_FEEDBACK_MS) {
         setCopied(false);
       }, feedbackMs);
     },
-    [feedbackMs]
+    [feedbackMs],
   );
 
   return { copied, copy };
