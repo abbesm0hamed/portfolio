@@ -35,6 +35,8 @@
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
   --surface: oklch(0.98 0 0);
+  --inset: oklch(0.97 0 0);
+  --elevated: oklch(1 0 0);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -70,6 +72,8 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --surface: oklch(0.18 0 0);
+  --inset: oklch(0.12 0 0);
+  --elevated: oklch(0.13 0 0);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -112,6 +116,8 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-surface: var(--surface);
+  --color-inset: var(--inset);
+  --color-elevated: var(--elevated);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -141,6 +147,15 @@
   padding-inline: 2rem;
   width: 100%;
   max-width: theme(--breakpoint-2xl);
+}
+
+@utility inset-shadow {
+  box-shadow: inset 0 1px 3px oklch(0 0 0 / 0.06);
+}
+
+@utility accent-top {
+  border-top: 2px solid var(--primary);
+  padding-top: 0.5rem;
 }
 
 @utility bg-grain {

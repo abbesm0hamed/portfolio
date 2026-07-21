@@ -39,7 +39,7 @@ function WorkSlide({ work }: { work: Work }) {
           <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
             {work.year} — {work.role} — {work.stack}
           </span>
-          <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[45ch] layout:max-w-[32ch] mt-6">
+          <span className="text-[clamp(1.15rem,2.5vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[45ch] layout:max-w-[32ch] mt-6">
             {work.title}
           </span>
           <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[45ch] layout:max-w-[32ch]">
