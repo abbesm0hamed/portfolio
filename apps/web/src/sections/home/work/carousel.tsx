@@ -33,16 +33,16 @@ function WorkSlide({ work }: { work: Work }) {
   const hasMultipleImages = work.images.length > 1;
 
   return (
-    <div className="grid size-full min-h-0 grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[40%_60%] layout:grid-rows-1">
+    <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[40%_60%] layout:grid-rows-1">
       <div className="flex min-h-0 flex-col overflow-hidden layout:h-full">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
           <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
             {work.year} — {work.role} — {work.stack}
           </span>
-          <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[27ch] layout:max-w-[32ch]">
+          <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[45ch] layout:max-w-[32ch] mt-6">
             {work.title}
           </span>
-          <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[27ch] layout:max-w-[32ch]">
+          <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[45ch] layout:max-w-[32ch]">
             {work.desc}
           </p>
         </div>

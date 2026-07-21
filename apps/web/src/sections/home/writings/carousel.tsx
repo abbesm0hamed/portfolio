@@ -79,12 +79,12 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
               <div className="flex flex-row justify-between h-full">
                 <div className="flex flex-1 flex-col gap-4 p-6 overflow-y-auto">
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
-                    {post.date} — Post
+                    {post.date}
                   </span>
-                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[25ch] md:layout:max-w-[40ch]">
+                  <span className="text-[clamp(1rem,2vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[25ch] md:layout:max-w-[40ch] pt-6">
                     {post.title}
                   </span>
-                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[25ch] md:layout:max-w-[40ch]">
+                  <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[45ch] layout:max-w-[55ch]">
                     {post.desc}
                   </p>
                 </div>
