@@ -15,10 +15,10 @@ export const setupItems: SetupItem[] = [
     title: "Fedora",
   },
   {
-    category: "Compositor",
+    category: "Window Manager",
     cmd: "niri --version",
-    desc: "Niri — a scrollable-tiling Wayland compositor. Every workspace is an infinite vertical strip.",
-    id: "setup-compositor",
+    desc: "Niri — a scrollable-tiling Wayland based Window Manager. Every workspace is an infinite vertical strip.",
+    id: "setup-wm",
     title: "Niri",
   },
   {

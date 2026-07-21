@@ -81,7 +81,7 @@ export default function SetupTerminal({ items }: SetupTerminalProps) {
                 <div className="text-foreground font-semibold">
                   {item.title}
                 </div>
-                <p className="text-muted-foreground leading-relaxed layout:max-w-[75ch]">
+                <p className="text-muted-foreground leading-relaxed">
                   {item.desc}
                 </p>
               </div>
