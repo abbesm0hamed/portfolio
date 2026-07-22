@@ -38,14 +38,21 @@ function CopyLinkButton({ slug }: { slug: string }) {
       aria-label={copied ? "Link copied" : `Copy link to this post`}
       className="h-control w-control border-t border-t-border text-muted-foreground rounded-none"
     >
-      {copied ? <Icons.Check className="size-4" /> : <Icons.Link className="size-4" />}
+      {copied ? (
+        <Icons.Check className="size-4" />
+      ) : (
+        <Icons.Link className="size-4" />
+      )}
     </Button>
   );
 }
 
 export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
   return (
-    <Carousel opts={{ align: "start", loop: true }} className="h-full flex-1 flex flex-col">
+    <Carousel
+      opts={{ align: "start", loop: true }}
+      className="h-full flex-1 flex flex-col"
+    >
       <div className="flex justify-between items-center h-control border-b">
         <span className="text-[0.7rem] leading-none tracking-[0.2em] uppercase text-muted-foreground px-6">
           Writing
@@ -74,7 +81,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
                   <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
                     {post.date}
                   </span>
-                  <span className="text-[clamp(1.15rem,2.5vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[25ch] md:layout:max-w-[40ch] pt-6">
+                  <span className="text-[clamp(1.15rem,2.5vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[25ch] md:layout:max-w-[40ch] pt-4">
                     {post.title}
                   </span>
                   <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[45ch] layout:max-w-[55ch]">

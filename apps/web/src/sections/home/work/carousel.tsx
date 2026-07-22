@@ -39,7 +39,7 @@ function WorkSlide({ work }: { work: Work }) {
           <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
             {work.year} — {work.role} — {work.stack}
           </span>
-          <span className="text-[clamp(1.15rem,2.5vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[45ch] layout:max-w-[32ch] mt-6">
+          <span className="text-[clamp(1.15rem,2.5vw,1.5rem)] font-bold tracking-[0.08em] leading-none max-w-[45ch] layout:max-w-[32ch] mt-4">
             {work.title}
           </span>
           <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[45ch] layout:max-w-[32ch]">
@@ -70,9 +70,17 @@ function WorkSlide({ work }: { work: Work }) {
       <div className="min-h-0 overflow-hidden layout:h-full layout:border-l max-layout:border-t">
         <div className="relative size-full overflow-hidden">
           {hasMultipleImages ? (
-            <WorkImages images={work.images} title={work.title} setApi={setImageApi} />
+            <WorkImages
+              images={work.images}
+              title={work.title}
+              setApi={setImageApi}
+            />
           ) : (
-            <img alt={work.title} className="size-full object-cover" src={work.images[0]} />
+            <img
+              alt={work.title}
+              className="size-full object-cover"
+              src={work.images[0]}
+            />
           )}
         </div>
       </div>
