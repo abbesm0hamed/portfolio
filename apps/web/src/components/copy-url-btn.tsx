@@ -13,7 +13,11 @@ export const CopyUrlBtn = ({ className }: { className?: string }) => {
       aria-label={copied ? "Link copied" : "Copy link"}
       className={className}
     >
-      {copied ? <Icons.Check className="size-4" /> : <Icons.Link className="size-4" />}
+      {copied ? (
+        <Icons.Check className="size-4" />
+      ) : (
+        <Icons.Link className="size-4" />
+      )}
     </Button>
   );
 };

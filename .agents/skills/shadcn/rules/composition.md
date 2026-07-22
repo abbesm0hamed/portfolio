@@ -44,17 +44,17 @@ Never render items directly inside the content container.
 
 This applies to all group-based components:
 
-| Item                                                       | Group                    |
-| ---------------------------------------------------------- | ------------------------ |
-| `SelectItem`, `SelectLabel`                                | `SelectGroup`            |
-| `DropdownMenuItem`, `DropdownMenuLabel`, `DropdownMenuSub` | `DropdownMenuGroup`      |
-| `MenubarItem`                                              | `MenubarGroup`           |
-| `ContextMenuItem`                                          | `ContextMenuGroup`       |
-| `CommandItem`                                              | `CommandGroup`           |
-| `MessageScrollerItem`                                      | `MessageScrollerContent` |
-| `Message` (consecutive, same sender)                       | `MessageGroup`           |
-| `Bubble` (stacked)                                         | `BubbleGroup`            |
-| `Attachment` (in a row)                                    | `AttachmentGroup`        |
+| Item | Group |
+| --- | --- |
+| `SelectItem`, `SelectLabel` | `SelectGroup` |
+| `DropdownMenuItem`, `DropdownMenuLabel`, `DropdownMenuSub` | `DropdownMenuGroup` |
+| `MenubarItem` | `MenubarGroup` |
+| `ContextMenuItem` | `ContextMenuGroup` |
+| `CommandItem` | `CommandGroup` |
+| `MessageScrollerItem` | `MessageScrollerContent` |
+| `Message` (consecutive, same sender) | `MessageGroup` |
+| `Bubble` (stacked) | `BubbleGroup` |
+| `Attachment` (in a row) | `AttachmentGroup` |
 
 Chat components nest in a fixed order (`MessageScrollerProvider` → `MessageScroller` → `MessageScrollerViewport` → `MessageScrollerContent` → `MessageScrollerItem`). See [chat.md](./chat.md).
 
@@ -196,8 +196,8 @@ Always include `AvatarFallback` for when the image fails to load:
 
 ## Use existing components instead of custom markup
 
-| Instead of                                         | Use                                  |
-| -------------------------------------------------- | ------------------------------------ |
-| `<hr>` or `<div className="border-t">`             | `<Separator />`                      |
+| Instead of | Use |
+| --- | --- |
+| `<hr>` or `<div className="border-t">` | `<Separator />` |
 | `<div className="animate-pulse">` with styled divs | `<Skeleton className="h-4 w-3/4" />` |
-| `<span className="rounded-full bg-green-100 ...">` | `<Badge variant="secondary">`        |
+| `<span className="rounded-full bg-green-100 ...">` | `<Badge variant="secondary">` |

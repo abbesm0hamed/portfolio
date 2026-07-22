@@ -69,18 +69,28 @@ export default function SetupTerminal({ items }: SetupTerminalProps) {
           {items.map((item) => (
             <div key={item.id} className="space-y-1">
               <div className="flex items-baseline gap-2">
-                <span className="text-muted-foreground/50 select-none pt-0.5">$</span>
+                <span className="text-muted-foreground/50 select-none pt-0.5">
+                  $
+                </span>
                 <span className="text-foreground/80">{item.cmd}</span>
               </div>
               <div className="ml-5 space-y-1">
-                <span className="text-muted-foreground/50 select-none"># {item.category}</span>
-                <div className="text-foreground font-semibold">{item.title}</div>
-                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                <span className="text-muted-foreground/50 select-none">
+                  # {item.category}
+                </span>
+                <div className="text-foreground font-semibold">
+                  {item.title}
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             </div>
           ))}
           <div className="flex items-center gap-2 text-muted-foreground/50">
-            <span className="flex items-center justify-center pt-[0.2rem]">$</span>
+            <span className="flex items-center justify-center pt-[0.2rem]">
+              $
+            </span>
             <span className="w-[0.35rem] h-[1em] bg-current animate-blink" />
           </div>
         </div>
@@ -88,7 +98,9 @@ export default function SetupTerminal({ items }: SetupTerminalProps) {
       <div
         className={cn(
           "absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none flex flex-col items-center gap-1.5 text-muted-foreground transition-all duration-300",
-          showScrollIndicator ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1",
+          showScrollIndicator
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-1"
         )}
       >
         <span className="text-[0.625rem] tracking-[0.25em] uppercase font-mono bg-background/90 px-2 py-1 rounded border border-border backdrop-blur-xs shadow-xs">

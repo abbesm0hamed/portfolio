@@ -21,10 +21,7 @@ interface WritingsCarouselProps {
 }
 
 function rawMdUrl(slug: string) {
-  const base =
-    typeof window === "undefined"
-      ? (import.meta.env.PUBLIC_SERVER_URL as string)
-      : window.location.origin;
+  const base = import.meta.env.PUBLIC_SERVER_URL as string;
   return `${base}/content/writings/${slug}.md`;
 }
 

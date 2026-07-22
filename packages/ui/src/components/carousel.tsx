@@ -3,7 +3,12 @@ import { cn } from "@workspace/ui/lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 import type { UseEmblaCarouselType } from "embla-carousel-react";
 import * as React from "react";
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "reicon-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+} from "reicon-react";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -52,7 +57,7 @@ const Carousel = ({
       ...opts,
       axis: orientation === "horizontal" ? "x" : "y",
     },
-    plugins,
+    plugins
   );
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
   const [canScrollNext, setCanScrollNext] = React.useState(false);
@@ -83,7 +88,7 @@ const Carousel = ({
         scrollNext();
       }
     },
-    [scrollPrev, scrollNext],
+    [scrollPrev, scrollNext]
   );
 
   React.useEffect(() => {
@@ -114,7 +119,8 @@ const Carousel = ({
         canScrollPrev,
         carouselRef,
         opts,
-        orientation: orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+        orientation:
+          orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
         scrollNext,
         scrollPrev,
       }}
@@ -133,13 +139,24 @@ const Carousel = ({
   );
 };
 
-const CarouselContent = ({ className, ...props }: React.ComponentProps<"div">) => {
+const CarouselContent = ({
+  className,
+  ...props
+}: React.ComponentProps<"div">) => {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="overflow-hidden h-full" data-slot="carousel-content">
+    <div
+      ref={carouselRef}
+      className="overflow-hidden h-full"
+      data-slot="carousel-content"
+    >
       <div
-        className={cn("flex", orientation === "horizontal" ? "-ms-4" : "-mt-4 flex-col", className)}
+        className={cn(
+          "flex",
+          orientation === "horizontal" ? "-ms-4" : "-mt-4 flex-col",
+          className
+        )}
         {...props}
       />
     </div>
@@ -157,7 +174,7 @@ const CarouselItem = ({ className, ...props }: React.ComponentProps<"div">) => {
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "ps-4" : "pt-4",
-        className,
+        className
       )}
       {...props}
     />
@@ -183,7 +200,7 @@ const CarouselPrevious = ({
         orientation === "horizontal"
           ? "inset-y-0 -start-12 my-auto"
           : "-top-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2",
-        className,
+        className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
@@ -214,7 +231,7 @@ const CarouselNext = ({
         orientation === "horizontal"
           ? "inset-y-0 -end-12 my-auto"
           : "-bottom-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2",
-        className,
+        className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
@@ -239,20 +256,26 @@ const CarouselControls = ({
   nextIcon,
   prevIcon,
 }: CarouselControlsProps) => {
-  const { orientation, scrollNext, scrollPrev, canScrollNext, canScrollPrev } = useCarousel();
+  const { orientation, scrollNext, scrollPrev, canScrollNext, canScrollPrev } =
+    useCarousel();
 
-  const defaultNextIcon = orientation === "horizontal" ? <ChevronRight /> : <ChevronDown />;
-  const defaultPrevIcon = orientation === "horizontal" ? <ChevronLeft /> : <ChevronUp />;
+  const defaultNextIcon =
+    orientation === "horizontal" ? <ChevronRight /> : <ChevronDown />;
+  const defaultPrevIcon =
+    orientation === "horizontal" ? <ChevronLeft /> : <ChevronUp />;
 
   return (
-    <div data-slot="carousel-controls" className={cn("flex h-control", className)}>
+    <div
+      data-slot="carousel-controls"
+      className={cn("flex h-control", className)}
+    >
       <Button
         data-slot="carousel-controls-next"
         variant="ghost"
         size="icon-sm"
         className={cn(
           "h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
-          buttonClassName,
+          buttonClassName
         )}
         disabled={!canScrollNext}
         onClick={scrollNext}
@@ -266,7 +289,7 @@ const CarouselControls = ({
         size="icon-sm"
         className={cn(
           "h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
-          buttonClassName,
+          buttonClassName
         )}
         disabled={!canScrollPrev}
         onClick={scrollPrev}

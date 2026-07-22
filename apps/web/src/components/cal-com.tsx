@@ -5,6 +5,7 @@ const CALCOM_URL = "https://cal.com/abbesm0hamed";
 
 export const CalCom = () => (
   <Button
+    nativeButton={false}
     variant="ghost"
     aria-label="Schedule a meeting"
     className="h-full w-control border-r border-r-border text-muted-foreground hover:text-foreground"

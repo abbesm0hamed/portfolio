@@ -166,15 +166,15 @@ Dependency rules:
 
 When reasoning about a registry item string, classify it first.
 
-| Address                             | Scheme    | Meaning                                                      |
-| ----------------------------------- | --------- | ------------------------------------------------------------ |
-| `button`                            | shadcn    | Official shadcn item named `button`.                         |
-| `@acme/button`                      | namespace | Item `button` from configured registry `@acme`.              |
-| `@acme/ui/button`                   | namespace | Item `ui/button` from configured registry `@acme`.           |
-| `https://example.com/r/button.json` | url       | Built registry item JSON at that URL.                        |
-| `./button.json`                     | file      | Built registry item JSON on disk.                            |
-| `acme/ui/button`                    | github    | Item `button` from GitHub repo `acme/ui`.                    |
-| `acme/ui/forms/login#main`          | github    | Item `forms/login` from GitHub repo `acme/ui` at ref `main`. |
+| Address | Scheme | Meaning |
+| --- | --- | --- |
+| `button` | shadcn | Official shadcn item named `button`. |
+| `@acme/button` | namespace | Item `button` from configured registry `@acme`. |
+| `@acme/ui/button` | namespace | Item `ui/button` from configured registry `@acme`. |
+| `https://example.com/r/button.json` | url | Built registry item JSON at that URL. |
+| `./button.json` | file | Built registry item JSON on disk. |
+| `acme/ui/button` | github | Item `button` from GitHub repo `acme/ui`. |
+| `acme/ui/forms/login#main` | github | Item `forms/login` from GitHub repo `acme/ui` at ref `main`. |
 
 For namespace and GitHub addresses, slashful item names are allowed and are item names, not file paths. Addresses ending in `.json` keep file-address precedence, so `acme/ui/data/schema.json` is treated as a file path, not a GitHub item address.
 
