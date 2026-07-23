@@ -136,12 +136,7 @@
 }
 
 @theme {
-  --spacing-control: 2.2rem;
-}
-
-:root {
-  /* Desktop (laptop default) */
-  --spacing-control: 2.2rem;
+  --spacing-control: 2.25rem;
 }
 
 /* Large desktop screens: tighter spacing */
