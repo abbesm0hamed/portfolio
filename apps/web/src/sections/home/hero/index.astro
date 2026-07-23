@@ -1,6 +1,6 @@
 ---
-import { SocialBar } from "@/components/social-bar"
-import { ResumeButton } from "@/components/resume-button"
+import SocialBar from "@/components/social-bar.astro"
+import ResumeButton from "@/components/resume-button.astro"
 ---
 
 <div class="layout:border-r border-b flex flex-col justify-between overflow-hidden min-h-0">
@@ -12,9 +12,9 @@ import { ResumeButton } from "@/components/resume-button"
     </p>
   </div>
   <div class="h-control border-t border-t-border shrink-0 flex">
-    <SocialBar client:load />
+    <SocialBar />
     <div class="flex-1 bg-grain h-full" />
-    <ResumeButton client:load />
+    <ResumeButton />
   </div>
 </div>
 

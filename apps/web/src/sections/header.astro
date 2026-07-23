@@ -1,5 +1,5 @@
 ---
-import { CalCom } from "@/components/cal-com"
+import CalCom from "@/components/cal-com.astro"
 import { ThemeToggle } from "@/components/theme-toggle"
 ---
 
@@ -12,9 +12,9 @@ import { ThemeToggle } from "@/components/theme-toggle"
   <div class="h-control border-b">
     <div class="h-full container">
       <div class="h-full border-x flex justify-between">
-        <CalCom client:load />
+        <CalCom />
         <div class="flex-1 bg-grain" />
-        <ThemeToggle client:load />
+        <ThemeToggle client:idle />
       </div>
     </div>
   </div>

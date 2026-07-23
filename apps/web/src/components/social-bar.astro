@@ -1,0 +1,40 @@
+---
+import { Icons } from "@workspace/ui/icons";
+
+const socials = [
+  {
+    href: "https://github.com/abbesm0hamed",
+    icon: Icons.Github,
+    label: "GitHub",
+  },
+  { href: "https://x.com/thr3add", icon: Icons.Twitter, label: "Twitter" },
+  {
+    href: "https://linkedin.com/abbesm0hamed",
+    icon: Icons.Linkedin,
+    label: "LinkedIn",
+  },
+  {
+    href: "mailto:abbesmohamed717@gmail.com",
+    icon: Icons.Mail,
+    label: "Email",
+  },
+];
+---
+
+<div class="flex items-center h-full">
+  {socials.map(({ icon: Icon, href, label }, index) => (
+    <div class="flex items-center h-full">
+      {index > 0 && <div class="h-full w-px bg-border" />}
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        class="flex items-center justify-center h-full w-control px-2 text-muted-foreground hover:text-foreground transition-colors [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4"
+      >
+        <Icon />
+      </a>
+    </div>
+  ))}
+  <div class="h-full w-px bg-border" />
+</div>

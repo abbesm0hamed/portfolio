@@ -1,5 +1,4 @@
 ---
-import { Button } from "@workspace/ui/components/button"
 import { Icons } from "@workspace/ui/icons"
 ---
 
@@ -7,25 +6,21 @@ import { Icons } from "@workspace/ui/icons"
   <div class="h-control border-t">
     <div class="h-full container">
       <div class="h-full border-x flex justify-between">
-        <Button
-          client:load
-          variant="ghost"
+        <button
           data-scroll="down"
           aria-label="Scroll down"
-          className="h-full w-control border-r border-r-border text-muted-foreground hover:text-foreground"
+          class="h-full w-control border-r border-r-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors inline-flex items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4"
         >
           <Icons.ArrowDown />
-        </Button>
+        </button>
         <div class="flex-1 bg-grain" />
-        <Button
-          client:load
-          variant="ghost"
+        <button
           data-scroll="up"
           aria-label="Scroll up"
-          className="h-full w-control border-l border-l-border text-muted-foreground hover:text-foreground"
+          class="h-full w-control border-l border-l-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors inline-flex items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4"
         >
           <Icons.ArrowUp />
-        </Button>
+        </button>
       </div>
     </div>
   </div>
