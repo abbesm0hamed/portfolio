@@ -8,12 +8,12 @@ config({ path: "../../apps/web/.env" });
 const app = await alchemy("portfolio");
 
 export const web = await Astro("web", {
-  assets: "dist/client",
+  assets: "../../apps/web/dist/client",
   bindings: {
     PUBLIC_SERVER_URL: alchemy.env.PUBLIC_SERVER_URL!,
   },
   cwd: "../../apps/web",
-  entrypoint: "dist/server/entry.mjs",
+  entrypoint: "../../apps/web/dist/server/entry.mjs",
 });
 
 console.log(`Web    -> ${web.url}`);

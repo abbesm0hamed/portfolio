@@ -12,6 +12,7 @@
     "typecheck": "astro check"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.1.4",
     "@astrojs/react": "^6",
     "@types/react": "^19",
     "@types/react-dom": "^19",

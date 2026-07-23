@@ -43,6 +43,7 @@ lerna-debug.log*
 # deployment
 .alchemy
 .vercel
+.wrangler
 
 # Testing
 coverage
