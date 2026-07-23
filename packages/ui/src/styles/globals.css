@@ -133,7 +133,29 @@
     "Courier New", monospace;
   --animate-blink: blink 1s step-end infinite;
   --breakpoint-layout: 1280px;
+}
+
+@theme {
   --spacing-control: 2.2rem;
+}
+
+:root {
+  /* Desktop (laptop default) */
+  --spacing-control: 2.2rem;
+}
+
+/* Large desktop screens: tighter spacing */
+@media (min-width: 1536px) {
+  :root {
+    --spacing-control: 2rem;
+  }
+}
+
+/* Mobile & tablet (touchable screens): more breathing room */
+@media (max-width: 1024px) {
+  :root {
+    --spacing-control: 2.5rem;
+  }
 }
 
 @keyframes blink {

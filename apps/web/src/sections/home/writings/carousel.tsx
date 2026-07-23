@@ -61,7 +61,10 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
           >
             <Icons.ArrowUpRight className="size-4" />
           </a>
-          <CarouselControls className="flex-row-reverse" />
+          <CarouselControls
+            className="flex-row-reverse"
+            buttonClassName="h-control w-control"
+          />
         </div>
       </div>
       <CarouselContent className="flex-1 m-0 h-full">

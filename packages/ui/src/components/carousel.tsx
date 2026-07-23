@@ -272,9 +272,8 @@ const CarouselControls = ({
       <Button
         data-slot="carousel-controls-next"
         variant="ghost"
-        size="icon-sm"
         className={cn(
-          "h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
+          "h-full rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
           buttonClassName
         )}
         disabled={!canScrollNext}
@@ -286,9 +285,8 @@ const CarouselControls = ({
       <Button
         data-slot="carousel-controls-prev"
         variant="ghost"
-        size="icon-sm"
         className={cn(
-          "h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
+          "h-full rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
           buttonClassName
         )}
         disabled={!canScrollPrev}
