@@ -5,7 +5,7 @@ import { config } from "dotenv";
 config({ path: "./.env" });
 config({ path: "../../apps/web/.env" });
 
-const app = await alchemy("portfolio");
+const app = await alchemy("me");
 
 export const web = await Astro("web", {
   assets: "../../apps/web/dist/client",
