@@ -4,6 +4,8 @@ import { Icons } from "@workspace/ui/icons";
 import Layout from "@/layouts/main.astro";
 import { CopyUrlBtn } from "@/components/copy-url-btn";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const writings = await getCollection("writings");
   return writings.map((entry) => ({

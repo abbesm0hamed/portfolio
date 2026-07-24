@@ -5,27 +5,23 @@ Infrastructure-as-code for deploying the portfolio to Cloudflare Workers using [
 ## Prerequisites
 
 1. Install dependencies from the monorepo root:
+
    ```bash
    bun install
    ```
 
-2. Authenticate with Cloudflare:
-   ```bash
-   npx alchemy configure
-   ```
-
-3. Copy `.env.example` to `.env` and fill in your secrets:
+2. Copy `.env.example` to `.env` and fill in your Cloudflare API token:
    ```bash
    cp .env.example .env
    ```
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `bun run deploy` | Deploy to Cloudflare Workers (run from monorepo root) |
-| `bun run destroy` | Tear down deployed infrastructure |
-| `bun run dev` | Start local dev with Alchemy |
+| Command           | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `bun run deploy`  | Deploy to Cloudflare Workers (run from monorepo root) |
+| `bun run destroy` | Tear down deployed infrastructure                     |
+| `bun run dev`     | Start local dev with Alchemy                          |
 
 ## How it works
 

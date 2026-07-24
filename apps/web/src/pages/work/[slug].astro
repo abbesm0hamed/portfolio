@@ -3,6 +3,8 @@ import { getCollection, render } from "astro:content";
 import { Icons } from "@workspace/ui/icons";
 import Layout from "@/layouts/main.astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const works = await getCollection("work");
   return works.map((entry) => ({
