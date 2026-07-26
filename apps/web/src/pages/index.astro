@@ -3,6 +3,7 @@ import Layout from "@/layouts/main.astro"
 import Hero from "@/sections/home/hero/index.astro"
 import Work from "@/sections/home/work/index.astro"
 import Quote from "@/sections/home/quote/index.astro"
+import GHHeatmap from "@/sections/home/gh-heatmap/index.astro"
 import Setup from "@/sections/home/setup/index.astro"
 import Writings from "@/sections/home/writings/index.astro"
 ---
@@ -17,7 +18,10 @@ import Writings from "@/sections/home/writings/index.astro"
     </div>
 
     <div class="layout:h-[45%] grid grid-cols-[25%_75%] max-layout:grid-cols-1 max-layout:flex-none">
-      <Quote />
+      <div class="grid grid-rows-[85%_15%] max-layout:grid-rows-1 overflow-hidden">
+        <Quote />
+        <GHHeatmap />
+      </div>
       <Work />
     </div>
 
