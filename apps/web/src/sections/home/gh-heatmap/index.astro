@@ -53,7 +53,7 @@ const levelFill = (level: number) => LEVEL_FILLS[level] ?? "fill-muted"
     <svg
       class="size-full"
       viewBox={`0 0 ${weeks.length} 7`}
-      preserveAspectRatio="xMidYMid meet"
+      preserveAspectRatio="none"
     >
       {weeks.map((week, wi) =>
         week.map(
