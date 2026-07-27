@@ -1,6 +1,7 @@
 import {
   RiCalendarEventLine,
   RiGithubLine,
+  RiGitCommitLine,
   RiGitRepositoryLine,
   RiLinkedinLine,
   RiTwitterXLine,
@@ -47,6 +48,7 @@ export const Icons = {
   EffectTs: EffectTsLogo,
   Expand,
   Gallery: GalleryWide,
+  GitCommit: RiGitCommitLine,
   GitRepository: RiGitRepositoryLine,
   Github: RiGithubLine,
   Link: Link5,

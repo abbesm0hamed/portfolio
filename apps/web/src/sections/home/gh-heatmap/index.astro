@@ -1,4 +1,5 @@
 ---
+import { Icons } from "@workspace/ui/icons";
 import { getContributions } from "@/lib/github-contributions"
 
 const contributions = await getContributions()
@@ -48,10 +49,23 @@ const LEVEL_FILLS = [
 const levelFill = (level: number) => LEVEL_FILLS[level] ?? "fill-muted"
 ---
 
-<div class="h-full w-full layout:border-r border-b overflow-hidden bg-elevated dark:bg-elevated">
+<div class="h-full w-full layout:border-r border-b overflow-hidden bg-elevated dark:bg-elevated flex flex-col">
+  <div class="flex items-center justify-between h-control border-b shrink-0">
+    <span class="text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground pl-6">
+      GitHub
+    </span>
+    <a
+      href="https://gitcity.natrajx.in/abbesm0hamed/isometric"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="flex h-control w-control items-center justify-center border-l border-l-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4"
+    >
+      <Icons.GitCommit />
+    </a>
+  </div>
   {weeks.length > 0 && (
     <svg
-      class="size-full"
+      class="flex-1 size-full"
       viewBox={`0 0 ${weeks.length} 7`}
       preserveAspectRatio="none"
     >
