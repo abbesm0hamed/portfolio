@@ -1,6 +1,7 @@
 import {
   RiCalendarEventLine,
   RiClaudeFill,
+  RiFileCopyLine,
   RiGitCommitLine,
   RiGithubLine,
   RiGitPullRequestLine,
@@ -45,6 +46,7 @@ export const Icons = {
   ChevronRight,
   ChevronUp,
   Claude: RiClaudeFill,
+  Copy: RiFileCopyLine,
   Download,
   EffectTs: EffectTsLogo,
   Expand,

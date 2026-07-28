@@ -50,32 +50,31 @@ function CopyCloneButton({ repo }: { repo: string }) {
       >
         <Icons.GitClone className="size-4" />
       </PopoverTrigger>
-      <PopoverContent align="end" side="top" className="w-auto p-3">
-        <div className="flex flex-col gap-2">
-          <span className="text-[0.625rem] tracking-widest uppercase text-muted-foreground font-sans">
-            Clone Repository
-          </span>
-          <div className="flex items-center gap-2 bg-muted/60 px-2.5 py-1.5 border border-border">
-            <code className="text-xs font-mono select-all text-foreground">
-              {cloneCommand}
-            </code>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => copy(cloneCommand)}
-              className="h-6 px-2 text-[0.7rem] font-sans hover:bg-background"
-            >
-              {copied ? (
-                <>
-                  <Icons.Check className="size-3 text-emerald-500" />
-                  <span className="text-emerald-500">Copied</span>
-                </>
-              ) : (
-                "Copy"
-              )}
-            </Button>
-          </div>
-        </div>
+      <PopoverContent
+        align="end"
+        side="top"
+        className="w-auto p-1 rounded-none border-border"
+      >
+        <Button
+          size="sm"
+          variant="ghost"
+          onClick={() => copy(cloneCommand)}
+          className="h-7 px-2.5 text-xs font-sans gap-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-none"
+        >
+          {copied ? (
+            <>
+              <Icons.Check className="size-3.5 text-emerald-500" />
+              <span className="text-emerald-500 font-medium">
+                Copied git clone
+              </span>
+            </>
+          ) : (
+            <>
+              <Icons.Copy className="size-3.5" />
+              <span>Copy git clone command</span>
+            </>
+          )}
+        </Button>
       </PopoverContent>
     </Popover>
   );
