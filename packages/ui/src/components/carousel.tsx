@@ -59,8 +59,8 @@ const Carousel = ({
     },
     plugins
   );
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-  const [canScrollNext, setCanScrollNext] = React.useState(false);
+  const [canScrollPrev, setCanScrollPrev] = React.useState(true);
+  const [canScrollNext, setCanScrollNext] = React.useState(true);
 
   const onSelect = React.useCallback((emblaApi: CarouselApi) => {
     if (!emblaApi) {
