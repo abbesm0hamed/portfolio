@@ -10,7 +10,14 @@ const LEVEL_COUNT_MAP: Record<number, number> = {
   4: 30,
 };
 
+const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
+let cached: { data: Activity[]; timestamp: number } | null = null;
+
 export async function getContributions(): Promise<Activity[]> {
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.data;
+  }
+
   try {
     const res = await fetch(CONTRIBUTIONS_URL, {
       headers: {
@@ -45,6 +52,7 @@ export async function getContributions(): Promise<Activity[]> {
       console.warn("No contribution data found in GitHub response");
     }
 
+    cached = { data: activities, timestamp: Date.now() };
     return activities;
   } catch (error) {
     console.warn("Failed to fetch GitHub contributions:", error);

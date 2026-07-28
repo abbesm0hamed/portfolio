@@ -113,14 +113,8 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
       <div className="min-h-0 flex-1">
         <CarouselContent className="m-0 h-full">
           {works.map((w) => (
-            <CarouselItem key={w.slug} className="relative min-h-0 p-0">
-              {/*
-                Embla sizes the item via flex-basis; percentage heights inside
-                are unreliable. Fill the slide with absolute inset instead.
-              */}
-              <div className="absolute inset-0">
-                <WorkSlide work={w} />
-              </div>
+            <CarouselItem key={w.slug} className="h-full min-h-0 p-0">
+              <WorkSlide work={w} />
             </CarouselItem>
           ))}
         </CarouselContent>
