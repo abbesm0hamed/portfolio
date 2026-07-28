@@ -195,8 +195,9 @@
     position: absolute;
     pointer-events: none;
     inset: 0;
-    --corner-color: var(--border);
+    --corner-color: var(--surface);
     --corner-l: 1rem;
+    opacity: var(--corner-opacity, 0.8);
   }
 
   &::before {
@@ -208,6 +209,40 @@
   }
 
   &::after {
+    background:
+      linear-gradient(to top right, var(--corner-color) 50%, transparent 50%)
+        bottom left / var(--corner-l) var(--corner-l) no-repeat,
+      linear-gradient(to top left, var(--corner-color) 50%, transparent 50%)
+        bottom right / var(--corner-l) var(--corner-l) no-repeat;
+  }
+}
+
+@utility corner-covers-top {
+  &::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    --corner-color: var(--surface);
+    --corner-l: 1rem;
+    opacity: var(--corner-opacity, 0.8);
+    background:
+      linear-gradient(to bottom right, var(--corner-color) 50%, transparent 50%)
+        top left / var(--corner-l) var(--corner-l) no-repeat,
+      linear-gradient(to bottom left, var(--corner-color) 50%, transparent 50%)
+        top right / var(--corner-l) var(--corner-l) no-repeat;
+  }
+}
+
+@utility corner-covers-bottom {
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    --corner-color: var(--surface);
+    --corner-l: 1rem;
+    opacity: var(--corner-opacity, 0.8);
     background:
       linear-gradient(to top right, var(--corner-color) 50%, transparent 50%)
         bottom left / var(--corner-l) var(--corner-l) no-repeat,
