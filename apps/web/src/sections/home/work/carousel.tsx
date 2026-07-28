@@ -31,15 +31,15 @@ function WorkSlide({ work }: { work: Work }) {
 
   return (
     <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[1fr_2fr] layout:grid-rows-1">
-      <div className="flex min-h-0 flex-col overflow-hidden layout:h-full">
+      <div className="flex min-h-0 min-w-0 flex-col overflow-hidden layout:h-full">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
           <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
             {work.year} — {work.role} — {work.stack}
           </span>
-          <span className="text-[clamp(1rem,2vw,1.25rem)] font-bold tracking-[0.08em] leading-none max-w-[45ch] layout:max-w-[32ch] mt-4">
+          <span className="text-[clamp(1rem,2vw,1.25rem)] font-bold tracking-[0.08em] leading-none mt-4">
             {work.title}
           </span>
-          <p className="text-[1rem] text-muted-foreground leading-relaxed max-w-[45ch] layout:max-w-[32ch]">
+          <p className="text-[1rem] text-muted-foreground leading-relaxed">
             {work.desc}
           </p>
         </div>
@@ -63,7 +63,7 @@ function WorkSlide({ work }: { work: Work }) {
         </div>
       </div>
 
-      <div className="min-h-0 overflow-hidden layout:border-l layout:border-l-border layout:h-full max-layout:border-t">
+      <div className="min-h-0 min-w-0 overflow-hidden layout:border-l layout:border-l-border layout:h-full max-layout:border-t">
         <div className="relative size-full overflow-hidden">
           {hasMultipleImages ? (
             <WorkImages

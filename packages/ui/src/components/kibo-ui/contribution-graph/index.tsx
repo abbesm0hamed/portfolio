@@ -13,8 +13,8 @@ import {
   parseISO,
   subWeeks,
 } from "date-fns";
-import { createContext, Fragment, useContext, useMemo } from 'react';
-import type { CSSProperties, HTMLAttributes, ReactNode } from 'react';
+import { createContext, Fragment, useContext, useMemo } from "react";
+import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 
 export interface Activity {
   date: string;
@@ -152,8 +152,9 @@ const groupByWeeks = (
       : subWeeks(nextDay(firstDate, weekStart), 1);
 
   const paddedActivities = [
-    ...(new Array(differenceInCalendarDays(firstDate, firstCalendarDate)).fill(
-      ) as Activity[]),
+    ...(new Array(
+      differenceInCalendarDays(firstDate, firstCalendarDate)
+    ).fill() as Activity[]),
     ...normalizedActivities,
   ];
 
@@ -169,7 +170,7 @@ const groupByWeeks = (
 const getMonthLabels = (
   weeks: Week[],
   monthNames: string[] = DEFAULT_MONTH_LABELS
-): MonthLabel[] => 
+): MonthLabel[] =>
   weeks
     .reduce<MonthLabel[]>((labels, week, weekIndex) => {
       const firstActivity = week.find((activity) => activity !== undefined);
@@ -194,7 +195,7 @@ const getMonthLabels = (
       const prevLabel = labels.at(-1);
 
       if (weekIndex === 0 || !prevLabel || prevLabel.label !== month) {
-        return labels.concat({ weekIndex, label: month });
+        return labels.concat({ label: month, weekIndex });
       }
 
       return labels;
@@ -211,8 +212,7 @@ const getMonthLabels = (
       }
 
       return true;
-    })
-;
+    });
 
 export type ContributionGraphProps = HTMLAttributes<HTMLDivElement> & {
   data: Activity[];
