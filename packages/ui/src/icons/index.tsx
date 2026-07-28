@@ -1,12 +1,13 @@
 import {
   RiCalendarEventLine,
-  RiGithubLine,
+  RiClaudeFill,
   RiGitCommitLine,
+  RiGithubLine,
+  RiGitPullRequestLine,
   RiGitRepositoryLine,
   RiLinkedinLine,
-  RiTwitterXLine,
   RiOpenaiFill,
-  RiClaudeFill,
+  RiTwitterXLine,
 } from "@remixicon/react";
 import {
   ArrowDown,
@@ -48,6 +49,7 @@ export const Icons = {
   EffectTs: EffectTsLogo,
   Expand,
   Gallery: GalleryWide,
+  GitClone: RiGitPullRequestLine,
   GitCommit: RiGitCommitLine,
   GitRepository: RiGitRepositoryLine,
   Github: RiGithubLine,

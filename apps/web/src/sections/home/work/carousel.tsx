@@ -5,6 +5,12 @@ import {
   CarouselControls,
   CarouselItem,
 } from "@workspace/ui/components/carousel";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@workspace/ui/components/popover";
+import { useCopyToClipboard } from "@workspace/ui/hooks/use-copy-to-clipboard";
 import { Icons } from "@workspace/ui/icons";
 
 import WorkImages from "./work-images";
@@ -18,12 +24,61 @@ interface Work {
   role: string;
   stack: string;
   year: string;
+  isPublic?: boolean;
   repo?: string;
   url?: string;
 }
 
 interface WorkCarouselProps {
   works: Work[];
+}
+
+function CopyCloneButton({ repo }: { repo: string }) {
+  const { copied, copy } = useCopyToClipboard();
+  const cloneCommand = `git clone ${repo}.git`;
+
+  return (
+    <Popover>
+      <PopoverTrigger
+        render={
+          <Button
+            variant="ghost"
+            aria-label="Clone repository command"
+            className="h-control w-control m-0 p-0 text-muted-foreground hover:text-foreground rounded-none border-l border-l-border"
+          />
+        }
+      >
+        <Icons.GitClone className="size-4" />
+      </PopoverTrigger>
+      <PopoverContent align="end" side="top" className="w-auto p-3">
+        <div className="flex flex-col gap-2">
+          <span className="text-[0.625rem] tracking-widest uppercase text-muted-foreground font-sans">
+            Clone Repository
+          </span>
+          <div className="flex items-center gap-2 bg-muted/60 px-2.5 py-1.5 border border-border">
+            <code className="text-xs font-mono select-all text-foreground">
+              {cloneCommand}
+            </code>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => copy(cloneCommand)}
+              className="h-6 px-2 text-[0.7rem] font-sans hover:bg-background"
+            >
+              {copied ? (
+                <>
+                  <Icons.Check className="size-3 text-emerald-500" />
+                  <span className="text-emerald-500">Copied</span>
+                </>
+              ) : (
+                "Copy"
+              )}
+            </Button>
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
 }
 
 function WorkSlide({ work }: { work: Work }) {
@@ -43,7 +98,7 @@ function WorkSlide({ work }: { work: Work }) {
             {work.desc}
           </p>
         </div>
-        <div className="flex h-control w-full border-t border-t-border">
+        <div className="flex justify-between h-control w-full border-t border-t-border">
           {work.repo ? (
             <a
               href={work.repo}
@@ -60,6 +115,9 @@ function WorkSlide({ work }: { work: Work }) {
             </a>
           ) : null}
           <div className="flex-1" />
+          {work.repo && work.isPublic !== false ? (
+            <CopyCloneButton repo={work.repo} />
+          ) : null}
         </div>
       </div>
 

@@ -7,6 +7,7 @@ const work = defineCollection({
   schema: z.object({
     description: z.string(),
     images: z.array(z.string()),
+    isPublic: z.boolean().default(true),
     repo: z.string().url().optional(),
     role: z.string(),
     stack: z.string(),

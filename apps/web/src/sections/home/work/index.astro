@@ -6,6 +6,7 @@ const workEntries = await getCollection("work");
 const works = workEntries.map((entry, i) => ({
   desc: entry.data.description,
   images: entry.data.images,
+  isPublic: entry.data.isPublic,
   num: String(i + 1).padStart(2, "0"),
   repo: entry.data.repo,
   role: entry.data.role,
