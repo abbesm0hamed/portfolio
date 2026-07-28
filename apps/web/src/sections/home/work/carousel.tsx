@@ -33,8 +33,8 @@ function WorkSlide({ work }: { work: Work }) {
   const hasMultipleImages = work.images.length > 1;
 
   return (
-    <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[40%_60%] layout:grid-rows-1">
-      <div className="flex min-h-0 flex-col overflow-hidden layout:h-full">
+    <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[1fr_2fr] layout:grid-rows-1">
+      <div className="flex min-h-0 flex-col overflow-hidden layout:h-full layout:border-r layout:border-r-border">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
           <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
             {work.year} — {work.role} — {work.stack}
@@ -67,7 +67,7 @@ function WorkSlide({ work }: { work: Work }) {
         </div>
       </div>
 
-      <div className="min-h-0 overflow-hidden layout:h-full layout:border-l max-layout:border-t">
+      <div className="min-h-0 overflow-hidden layout:h-full max-layout:border-t">
         <div className="relative size-full overflow-hidden">
           {hasMultipleImages ? (
             <WorkImages

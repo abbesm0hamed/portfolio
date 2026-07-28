@@ -13,11 +13,11 @@ import Writings from "@/sections/home/writings/index.astro"
     id="main-scroll"
     class="h-full flex flex-col overflow-hidden max-layout:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
   >
-    <div class="layout:h-[30%] grid grid-cols-[70%_30%] max-md:grid-cols-1">
+    <div class="layout:h-[30%] grid grid-cols-[7fr_3fr] max-md:grid-cols-1">
       <Hero />
     </div>
 
-    <div class="layout:h-[45%] grid grid-cols-[25%_75%] max-layout:grid-cols-1 max-layout:flex-none">
+    <div class="layout:h-[45%] grid grid-cols-[1fr_3fr] max-layout:grid-cols-1 max-layout:flex-none">
       <div class="grid grid-rows-[20%_80%] max-layout:grid-rows-1 overflow-hidden">
         <GHHeatmap />
         <Quote />
@@ -25,7 +25,7 @@ import Writings from "@/sections/home/writings/index.astro"
       <Work />
     </div>
 
-    <div class="layout:h-[25%] grid grid-cols-[55%_45%] max-layout:grid-cols-1 max-layout:flex-none">
+    <div class="layout:h-[25%] grid grid-cols-[1fr_1fr] max-layout:grid-cols-1 max-layout:flex-none">
       <Writings />
       <Setup />
     </div>
