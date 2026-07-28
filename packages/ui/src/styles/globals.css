@@ -197,7 +197,7 @@
     inset: 0;
     --corner-color: var(--surface);
     --corner-l: 1rem;
-    opacity: var(--corner-opacity, 0.8);
+    opacity: var(--corner-opacity, 0.9);
   }
 
   &::before {
