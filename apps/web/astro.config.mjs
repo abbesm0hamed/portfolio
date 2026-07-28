@@ -12,5 +12,8 @@ export default defineConfig({
   output: "server",
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      dedupe: ["react", "react-dom"],
+    },
   },
 });
