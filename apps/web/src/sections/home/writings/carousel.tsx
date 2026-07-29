@@ -1,10 +1,7 @@
+import { useCallback, useState } from "react";
 import { Button } from "@workspace/ui/components/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselControls,
-  CarouselItem,
-} from "@workspace/ui/components/carousel";
+import { Carousel, CarouselContent, CarouselControls, CarouselItem } from '@workspace/ui/components/carousel';
+import type { CarouselApi } from '@workspace/ui/components/carousel';
 import { useCopyToClipboard } from "@workspace/ui/hooks/use-copy-to-clipboard";
 import { Icons } from "@workspace/ui/icons";
 
@@ -45,9 +42,21 @@ function CopyLinkButton({ slug }: { slug: string }) {
 }
 
 export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const setApi = useCallback(
+    (api: CarouselApi) => {
+      if (!api) {return;}
+      setCurrentIndex(api.selectedScrollSnap());
+      api.on("select", () => setCurrentIndex(api.selectedScrollSnap()));
+    },
+    [],
+  );
+
   return (
     <Carousel
       opts={{ align: "start", loop: true }}
+      setApi={setApi}
       className="h-full flex-1 flex flex-col"
     >
       <div className="flex justify-between items-center h-control border-b">
@@ -56,7 +65,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
         </span>
         <div className="flex items-center">
           <a
-            href={`/writings/${writings[0]?.slug}`}
+            href={`/writings/${writings[currentIndex]?.slug}`}
             className="h-control w-control flex items-center justify-center text-muted-foreground border-l border-l-border hover:text-foreground hover:bg-muted"
           >
             <Icons.ArrowUpRight className="size-4" />

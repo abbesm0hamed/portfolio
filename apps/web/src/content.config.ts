@@ -6,7 +6,7 @@ const work = defineCollection({
   loader: glob({ base: "./public/content/work", pattern: "**/*.md" }),
   schema: z.object({
     description: z.string(),
-    images: z.array(z.string()),
+    images: z.array(z.string()).default([]),
     isPublic: z.boolean().default(true),
     repo: z.string().url().optional(),
     role: z.string(),

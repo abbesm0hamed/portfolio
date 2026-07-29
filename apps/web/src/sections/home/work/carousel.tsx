@@ -1,10 +1,7 @@
+import { useCallback, useState } from "react";
 import { Button } from "@workspace/ui/components/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselControls,
-  CarouselItem,
-} from "@workspace/ui/components/carousel";
+import { Carousel, CarouselContent, CarouselControls, CarouselItem } from '@workspace/ui/components/carousel';
+import type { CarouselApi } from '@workspace/ui/components/carousel';
 import {
   Popover,
   PopoverContent,
@@ -82,7 +79,7 @@ function CopyCloneButton({ repo }: { repo: string }) {
 
 function WorkSlide({ work }: { work: Work }) {
   const hasMultipleImages = work.images.length > 1;
-  const hasNoImages = work.images.length === 0;
+  const hasImages = work.images.length > 0;
 
   return (
     <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[1fr_2fr] layout:grid-rows-1">
@@ -133,7 +130,7 @@ function WorkSlide({ work }: { work: Work }) {
             <img
               alt={work.title}
               className="size-full object-cover"
-              src={hasNoImages ? "/images/gh_cover.jpg" : work.images[0]}
+              src={hasImages ? work.images[0] : "/images/gh_cover.jpg"}
             />
           )}
         </div>
@@ -143,10 +140,22 @@ function WorkSlide({ work }: { work: Work }) {
 }
 
 export default function WorkCarousel({ works }: WorkCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const setApi = useCallback(
+    (api: CarouselApi) => {
+      if (!api) {return;}
+      setCurrentIndex(api.selectedScrollSnap());
+      api.on("select", () => setCurrentIndex(api.selectedScrollSnap()));
+    },
+    [],
+  );
+
   return (
     <Carousel
       orientation="vertical"
       opts={{ align: "start", dragFree: true, loop: true, watchDrag: false }}
+      setApi={setApi}
       className="flex h-full min-h-0 flex-1 flex-col border-b"
     >
       <div className="flex h-control shrink-0 items-center justify-between border-b">
@@ -155,7 +164,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
         </span>
         <div className="flex items-center">
           <a
-            href={`/work/${works[0]?.slug}`}
+            href={`/work/${works[currentIndex]?.slug}`}
             className="flex h-control w-control items-center justify-center border-l border-l-border text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <Icons.ArrowUpRight className="size-4" />
