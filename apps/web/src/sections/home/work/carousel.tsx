@@ -82,6 +82,7 @@ function CopyCloneButton({ repo }: { repo: string }) {
 
 function WorkSlide({ work }: { work: Work }) {
   const hasMultipleImages = work.images.length > 1;
+  const hasNoImages = work.images.length === 0;
 
   return (
     <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[1fr_2fr] layout:grid-rows-1">
@@ -132,7 +133,7 @@ function WorkSlide({ work }: { work: Work }) {
             <img
               alt={work.title}
               className="size-full object-cover"
-              src={work.images[0]}
+              src={hasNoImages ? "/images/gh_cover.jpg" : work.images[0]}
             />
           )}
         </div>
