@@ -1,17 +1,33 @@
 import type { Activity } from "@workspace/ui/components/kibo-ui/contribution-graph";
 
-const CONTRIBUTIONS_URL = "https://github.com/users/abbesm0hamed/contributions";
+const GITHUB_USERNAME = "abbesm0hamed";
 const CACHE_KEY = "https://portfolio.example.com/github-contributions";
 const CACHE_TTL_SECONDS = 6 * 60 * 60;
 const EMPTY_CACHE_TTL_SECONDS = 5 * 60;
 
-const LEVEL_COUNT_MAP: Record<number, number> = {
-  0: 0,
-  1: 1,
-  2: 5,
-  3: 15,
-  4: 30,
+const LEVEL_MAP: Record<string, 0 | 1 | 2 | 3 | 4> = {
+  FIRST_QUARTILE: 1,
+  FOURTH_QUARTILE: 4,
+  NONE: 0,
+  SECOND_QUARTILE: 2,
+  THIRD_QUARTILE: 3,
 };
+
+const CONTRIBUTIONS_QUERY = `query($login: String!) {
+  user(login: $login) {
+    contributionsCollection {
+      contributionCalendar {
+        weeks {
+          contributionDays {
+            date
+            contributionCount
+            contributionLevel
+          }
+        }
+      }
+    }
+  }
+}`;
 
 let memoryCache: { data: Activity[]; timestamp: number; ttl: number } | null =
   null;
@@ -63,41 +79,60 @@ const writeEdgeCache = async (data: Activity[], ttl: number) => {
   }
 };
 
-const scrapeContributions = async (): Promise<Activity[]> => {
-  const response = await fetch(CONTRIBUTIONS_URL, {
-    headers: {
-      Accept: "text/html",
-      "User-Agent": "portfolio-bot",
-    },
-  });
+interface GraphQLResponse {
+  data?: {
+    user?: {
+      contributionsCollection?: {
+        contributionCalendar?: {
+          weeks: {
+            contributionDays: {
+              contributionCount: number;
+              contributionLevel: string;
+              date: string;
+            }[];
+          }[];
+        };
+      };
+    };
+  };
+}
 
-  if (!response.ok) {
-    console.warn(
-      `Failed to fetch contributions: ${response.status} ${response.statusText}`
-    );
+const fetchContributions = async (): Promise<Activity[]> => {
+  const token = import.meta.env.GITHUB_TOKEN;
+
+  if (!token) {
+    console.warn("GITHUB_TOKEN is not set");
     return [];
   }
 
-  const html = await response.text();
-  const pattern =
-    /<td[^>]*?data-date="(?<date>\d{4}-\d{2}-\d{2})"[^>]*?data-level="(?<level>\d)"[^>]*?>/gu;
-  const activities: Activity[] = [];
-  let match: RegExpExecArray | null;
+  const res = await fetch("https://api.github.com/graphql", {
+    body: JSON.stringify({
+      query: CONTRIBUTIONS_QUERY,
+      variables: { login: GITHUB_USERNAME },
+    }),
+    headers: {
+      Authorization: `bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  });
 
-  while ((match = pattern.exec(html)) !== null) {
-    const { date, level } = match.groups as { date: string; level: string };
-    activities.push({
-      count: LEVEL_COUNT_MAP[Number(level)] ?? 0,
-      date,
-      level: Number(level),
-    });
+  if (!res.ok) {
+    console.warn(`GitHub GraphQL API error: ${res.status} ${res.statusText}`);
+    return [];
   }
 
-  if (activities.length === 0) {
-    console.warn("No contribution data found in GitHub response");
-  }
+  const json = (await res.json()) as GraphQLResponse;
 
-  return activities;
+  return (
+    json.data?.user?.contributionsCollection?.contributionCalendar?.weeks
+      ?.flatMap((w) => w.contributionDays)
+      ?.map((d) => ({
+        count: d.contributionCount,
+        date: d.date,
+        level: LEVEL_MAP[d.contributionLevel] ?? 0,
+      })) ?? []
+  );
 };
 
 export async function getContributions(): Promise<Activity[]> {
@@ -121,7 +156,7 @@ export async function getContributions(): Promise<Activity[]> {
     return edgeData;
   }
 
-  inflight = scrapeContributions();
+  inflight = fetchContributions();
   try {
     const data = await inflight;
     const ttl = data.length > 0 ? CACHE_TTL_SECONDS : EMPTY_CACHE_TTL_SECONDS;

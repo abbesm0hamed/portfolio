@@ -10,6 +10,7 @@ const app = await alchemy("me");
 export const web = await Astro("web", {
   assets: "../../apps/web/dist/client",
   bindings: {
+    GITHUB_TOKEN: alchemy.env.GITHUB_TOKEN!,
     PUBLIC_SERVER_URL: alchemy.env.PUBLIC_SERVER_URL!,
   },
   cwd: "../../apps/web",

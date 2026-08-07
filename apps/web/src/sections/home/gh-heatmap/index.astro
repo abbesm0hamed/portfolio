@@ -30,7 +30,7 @@ import { Icons } from "@workspace/ui/icons";
           width={1}
           height={1}
           class="fill-muted-foreground/15"
-          style={`animation-delay: ${wi * 12 + di * 4}ms`}
+          style={`animation-delay: ${wi * 12 + di * 20}ms`}
         />
       ))
     )}
@@ -56,6 +56,9 @@ import { Icons } from "@workspace/ui/icons";
     "fill-muted-foreground/80",
   ];
 
+  const formatLocalDate = (d: Date) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
   const svg = document.querySelector("#gh-heatmap");
   if (svg) {
     const load = async () => {
@@ -75,19 +78,23 @@ import { Icons } from "@workspace/ui/icons";
         const levelMap = new Map(sorted.map((a) => [a.date, a.level]));
 
         const weeks: number[][] = [];
-        const firstDate = new Date(sorted[0].date);
+        const firstDate = new Date(`${sorted[0].date}T00:00:00`);
         const startDate = new Date(firstDate);
         startDate.setDate(firstDate.getDate() - firstDate.getDay());
 
-        const lastDate = new Date(sorted.at(-1).date);
+        const lastEntry = sorted.at(-1);
+        if (!lastEntry) {
+          return;
+        }
+
+        const lastDate = new Date(`${lastEntry.date}T00:00:00`);
         lastDate.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
 
         const current = new Date(startDate);
         let currentWeek: number[] = [];
 
         while (current.getTime() <= lastDate.getTime()) {
-          const dateStr = current.toISOString().slice(0, 10);
-          currentWeek.push(levelMap.get(dateStr) ?? 0);
+          currentWeek.push(levelMap.get(formatLocalDate(current)) ?? 0);
 
           if (currentWeek.length === 7) {
             weeks.push(currentWeek);
