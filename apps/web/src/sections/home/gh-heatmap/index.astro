@@ -1,52 +1,5 @@
 ---
 import { Icons } from "@workspace/ui/icons";
-import { getContributions } from "@/lib/github-contributions"
-
-const contributions = await getContributions()
-const sorted = contributions.toSorted((a, b) =>
-  a.date.localeCompare(b.date)
-)
-const levelMap = new Map<string, number>(
-  sorted.map((a) => [a.date, a.level])
-)
-
-const weeks: number[][] = []
-
-if (sorted.length > 0) {
-  const firstDate = new Date(sorted[0].date)
-  const startDate = new Date(firstDate)
-  startDate.setDate(firstDate.getDate() - firstDate.getDay())
-
-  const lastIdx = sorted.length - 1
-  const lastDate = new Date(sorted[lastIdx].date)
-  lastDate.setDate(lastDate.getDate() + (6 - lastDate.getDay()))
-
-  const endTime = lastDate.getTime()
-  const current = new Date(startDate)
-  let currentWeek: number[] = []
-
-  while (current.getTime() <= endTime) {
-    const dateStr = current.toISOString().slice(0, 10)
-    currentWeek.push(levelMap.get(dateStr) ?? 0)
-
-    if (currentWeek.length === 7) {
-      weeks.push(currentWeek)
-      currentWeek = []
-    }
-
-    current.setDate(current.getDate() + 1)
-  }
-}
-
-const LEVEL_FILLS = [
-  "fill-muted",
-  "fill-muted-foreground/20",
-  "fill-muted-foreground/40",
-  "fill-muted-foreground/60",
-  "fill-muted-foreground/80",
-]
-
-const levelFill = (level: number) => LEVEL_FILLS[level] ?? "fill-muted"
 ---
 
 <div class="h-full w-full layout:border-r border-b overflow-hidden bg-elevated dark:bg-elevated flex flex-col">
@@ -63,27 +16,105 @@ const levelFill = (level: number) => LEVEL_FILLS[level] ?? "fill-muted"
       <Icons.GitCommit />
     </a>
   </div>
-  {weeks.length > 0 && (
-    <svg
-      class="flex-1 size-full"
-      viewBox={`0 0 ${weeks.length} 7`}
-      preserveAspectRatio="none"
-    >
-      {weeks.map((week, wi) =>
-        week.map(
-          (level, di) =>
-            level > 0 && (
-              <rect
-                key={`${wi}-${di}`}
-                x={wi}
-                y={di}
-                width={1}
-                height={1}
-                class={levelFill(level)}
-              />
-            )
-        )
-      )}
-    </svg>
-  )}
+  <svg
+    id="gh-heatmap"
+    class="flex-1 size-full"
+    viewBox="0 0 53 7"
+    preserveAspectRatio="none"
+  >
+    {Array.from({ length: 53 }, (_, wi) =>
+      Array.from({ length: 7 }, (_, di) => (
+        <rect
+          x={wi}
+          y={di}
+          width={1}
+          height={1}
+          class="fill-muted-foreground/15"
+          style={`animation-delay: ${wi * 12 + di * 4}ms`}
+        />
+      ))
+    )}
+  </svg>
 </div>
+
+<style>
+  @keyframes skeleton-pulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.45; }
+  }
+  #gh-heatmap rect {
+    animation: skeleton-pulse 2s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  const LEVEL_FILLS = [
+    "fill-muted",
+    "fill-muted-foreground/20",
+    "fill-muted-foreground/40",
+    "fill-muted-foreground/60",
+    "fill-muted-foreground/80",
+  ];
+
+  const svg = document.querySelector("#gh-heatmap");
+  if (svg) {
+    const load = async () => {
+      try {
+        const res = await fetch("/api/contributions");
+        const contributions: { date: string; level: number }[] =
+          await res.json();
+
+        if (!contributions.length) {
+          svg.innerHTML = "";
+          return;
+        }
+
+        const sorted = contributions.toSorted((a, b) =>
+          a.date.localeCompare(b.date)
+        );
+        const levelMap = new Map(sorted.map((a) => [a.date, a.level]));
+
+        const weeks: number[][] = [];
+        const firstDate = new Date(sorted[0].date);
+        const startDate = new Date(firstDate);
+        startDate.setDate(firstDate.getDate() - firstDate.getDay());
+
+        const lastDate = new Date(sorted.at(-1).date);
+        lastDate.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
+
+        const current = new Date(startDate);
+        let currentWeek: number[] = [];
+
+        while (current.getTime() <= lastDate.getTime()) {
+          const dateStr = current.toISOString().slice(0, 10);
+          currentWeek.push(levelMap.get(dateStr) ?? 0);
+
+          if (currentWeek.length === 7) {
+            weeks.push(currentWeek);
+            currentWeek = [];
+          }
+
+          current.setDate(current.getDate() + 1);
+        }
+
+        svg.setAttribute("viewBox", `0 0 ${weeks.length} 7`);
+        svg.innerHTML = weeks
+          .map((week, wi) =>
+            week
+              .map(
+                (level, di) =>
+                  level > 0
+                    ? `<rect x="${wi}" y="${di}" width="1" height="1" class="${LEVEL_FILLS[level] ?? "fill-muted"}" />`
+                    : ""
+              )
+              .join("")
+          )
+          .join("");
+      } catch {
+        // keep skeleton on failure
+      }
+    };
+
+    load();
+  }
+</script>
