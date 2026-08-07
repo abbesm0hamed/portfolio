@@ -1,7 +1,11 @@
-import { useCallback, useState } from "react";
 import { Button } from "@workspace/ui/components/button";
-import { Carousel, CarouselContent, CarouselControls, CarouselItem } from '@workspace/ui/components/carousel';
-import type { CarouselApi } from '@workspace/ui/components/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselControls,
+  CarouselItem,
+} from "@workspace/ui/components/carousel";
+import type { CarouselApi } from "@workspace/ui/components/carousel";
 import {
   Popover,
   PopoverContent,
@@ -9,6 +13,7 @@ import {
 } from "@workspace/ui/components/popover";
 import { useCopyToClipboard } from "@workspace/ui/hooks/use-copy-to-clipboard";
 import { Icons } from "@workspace/ui/icons";
+import { useCallback, useState } from "react";
 
 import WorkImages from "./work-images";
 
@@ -82,7 +87,7 @@ function WorkSlide({ work }: { work: Work }) {
   const hasImages = work.images.length > 0;
 
   return (
-    <div className="grid size-full grid-rows-[minmax(0,1fr)_minmax(14rem,1.2fr)] layout:grid-cols-[1fr_2fr] layout:grid-rows-1">
+    <div className="grid size-full grid-rows-[0.4fr_auto] layout:grid-cols-[1fr_2fr] layout:grid-rows-1">
       <div className="flex min-h-0 min-w-0 flex-col overflow-hidden layout:h-full">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-6">
           <span className="text-[0.625rem] tracking-[0.2em] uppercase text-muted-foreground">
@@ -142,14 +147,13 @@ function WorkSlide({ work }: { work: Work }) {
 export default function WorkCarousel({ works }: WorkCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const setApi = useCallback(
-    (api: CarouselApi) => {
-      if (!api) {return;}
-      setCurrentIndex(api.selectedScrollSnap());
-      api.on("select", () => setCurrentIndex(api.selectedScrollSnap()));
-    },
-    [],
-  );
+  const setApi = useCallback((api: CarouselApi) => {
+    if (!api) {
+      return;
+    }
+    setCurrentIndex(api.selectedScrollSnap());
+    api.on("select", () => setCurrentIndex(api.selectedScrollSnap()));
+  }, []);
 
   return (
     <Carousel
