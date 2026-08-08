@@ -59,69 +59,71 @@ import { Icons } from "@workspace/ui/icons";
   const formatLocalDate = (d: Date) =>
     `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
-  const svg = document.querySelector("#gh-heatmap");
-  if (svg) {
-    const load = async () => {
-      try {
-        const res = await fetch("/api/contributions");
-        const contributions: { date: string; level: number }[] =
-          await res.json();
+  const loadHeatmap = async () => {
+    const svg = document.querySelector("#gh-heatmap");
+    if (!svg) {
+      return;
+    }
 
-        if (!contributions.length) {
-          svg.innerHTML = "";
-          return;
-        }
+    try {
+      const res = await fetch("/api/contributions");
+      const contributions: { date: string; level: number }[] =
+        await res.json();
 
-        const sorted = contributions.toSorted((a, b) =>
-          a.date.localeCompare(b.date)
-        );
-        const levelMap = new Map(sorted.map((a) => [a.date, a.level]));
-
-        const weeks: number[][] = [];
-        const firstDate = new Date(`${sorted[0].date}T00:00:00`);
-        const startDate = new Date(firstDate);
-        startDate.setDate(firstDate.getDate() - firstDate.getDay());
-
-        const lastEntry = sorted.at(-1);
-        if (!lastEntry) {
-          return;
-        }
-
-        const lastDate = new Date(`${lastEntry.date}T00:00:00`);
-        lastDate.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
-
-        const current = new Date(startDate);
-        let currentWeek: number[] = [];
-
-        while (current.getTime() <= lastDate.getTime()) {
-          currentWeek.push(levelMap.get(formatLocalDate(current)) ?? 0);
-
-          if (currentWeek.length === 7) {
-            weeks.push(currentWeek);
-            currentWeek = [];
-          }
-
-          current.setDate(current.getDate() + 1);
-        }
-
-        svg.setAttribute("viewBox", `0 0 ${weeks.length} 7`);
-        svg.innerHTML = weeks
-          .map((week, wi) =>
-            week
-              .map(
-                (level, di) =>
-                  level > 0
-                    ? `<rect x="${wi}" y="${di}" width="1" height="1" class="${LEVEL_FILLS[level] ?? "fill-muted"}" />`
-                    : ""
-              )
-              .join("")
-          )
-          .join("");
-      } catch {
-        // keep skeleton on failure
+      if (!contributions.length) {
+        svg.innerHTML = "";
+        return;
       }
-    };
 
-    load();
-  }
+      const sorted = contributions.toSorted((a, b) =>
+        a.date.localeCompare(b.date)
+      );
+      const levelMap = new Map(sorted.map((a) => [a.date, a.level]));
+
+      const weeks: number[][] = [];
+      const firstDate = new Date(`${sorted[0].date}T00:00:00`);
+      const startDate = new Date(firstDate);
+      startDate.setDate(firstDate.getDate() - firstDate.getDay());
+
+      const lastEntry = sorted.at(-1);
+      if (!lastEntry) {
+        return;
+      }
+
+      const lastDate = new Date(`${lastEntry.date}T00:00:00`);
+      lastDate.setDate(lastDate.getDate() + (6 - lastDate.getDay()));
+
+      const current = new Date(startDate);
+      let currentWeek: number[] = [];
+
+      while (current.getTime() <= lastDate.getTime()) {
+        currentWeek.push(levelMap.get(formatLocalDate(current)) ?? 0);
+
+        if (currentWeek.length === 7) {
+          weeks.push(currentWeek);
+          currentWeek = [];
+        }
+
+        current.setDate(current.getDate() + 1);
+      }
+
+      svg.setAttribute("viewBox", `0 0 ${weeks.length} 7`);
+      svg.innerHTML = weeks
+        .map((week, wi) =>
+          week
+            .map(
+              (level, di) =>
+                level > 0
+                  ? `<rect x="${wi}" y="${di}" width="1" height="1" class="${LEVEL_FILLS[level] ?? "fill-muted"}" />`
+                  : ""
+            )
+            .join("")
+        )
+        .join("");
+    } catch {
+      // keep skeleton on failure
+    }
+  };
+
+  document.addEventListener("astro:page-load", loadHeatmap);
 </script>
