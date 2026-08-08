@@ -11,21 +11,21 @@ import Writings from "@/sections/home/writings/index.astro"
 <Layout>
   <div
     id="main-scroll"
-    class="h-full grid layout:grid-rows-[6fr_9fr_5fr] max-layout:flex max-layout:flex-col overflow-hidden max-layout:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+    class="h-full grid layout:grid-rows-[6fr_9fr_5fr] max-layout:flex max-layout:flex-col max-layout-h:flex max-layout-h:flex-col overflow-hidden max-layout:overflow-y-auto max-layout-h:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
   >
-    <div class="min-h-0 max-layout:min-h-fit grid grid-cols-[7fr_3fr] max-md:grid-cols-1">
+    <div class="min-h-0 max-layout:min-h-fit max-layout-h:min-h-fit max-layout-h:h-auto max-layout-h:max-h-[35dvh] grid grid-cols-[7fr_3fr] max-md:grid-cols-1">
       <Hero />
     </div>
 
-    <div class="min-h-0 max-layout:min-h-fit grid grid-cols-[1fr_3fr] max-layout:grid-cols-1 max-layout:flex-none">
-      <div class="grid grid-rows-[20%_80%] max-layout:grid-rows-[auto_1fr] overflow-hidden">
+    <div class="min-h-0 max-layout:min-h-fit max-layout-h:min-h-fit max-layout-h:h-auto max-layout-h:max-h-[45dvh] grid grid-cols-[1fr_3fr] max-layout:grid-cols-1 max-layout:flex-none max-layout-h:flex-none">
+      <div class="grid grid-rows-[20%_80%] max-layout:grid-rows-[auto_1fr] max-layout-h:grid-rows-[25%_75%]  max-h-[800px]:grid-rows-[40%_60%] max-layout-h:h-auto max-layout-h:min-h-0 overflow-hidden">
         <GHHeatmap />
         <Quote />
       </div>
       <Work />
     </div>
 
-    <div class="min-h-0 max-layout:min-h-fit grid grid-cols-[1fr_1fr] max-layout:grid-cols-1 max-layout:flex-none">
+    <div class="min-h-0 max-layout:min-h-fit max-layout-h:min-h-fit max-layout-h:h-auto max-layout-h:max-h-[30dvh] grid grid-cols-[1fr_1fr] max-layout:grid-cols-1 max-layout:flex-none max-layout-h:flex-none">
       <Writings />
       <Setup />
     </div>
