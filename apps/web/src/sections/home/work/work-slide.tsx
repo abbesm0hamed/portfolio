@@ -62,11 +62,7 @@ export function WorkSlide({ work }: { work: Work }) {
       <div className="min-h-0 min-w-0 overflow-hidden layout:border-l layout:border-l-border layout:h-full max-layout:border-t">
         <div className="relative size-full overflow-hidden">
           {hasMultipleImages ? (
-            <WorkImages
-              images={work.images}
-              title={work.title}
-              buttonClassName="h-control w-control"
-            />
+            <WorkImages images={work.images} title={work.title} />
           ) : (
             <img
               alt={work.title}

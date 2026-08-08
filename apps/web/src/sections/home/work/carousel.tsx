@@ -44,7 +44,7 @@ export default function WorkCarousel({ works }: WorkCarouselProps) {
           >
             <Icons.ArrowUpRight className="size-4" />
           </a>
-          <CarouselControls buttonClassName="h-control w-control" />
+          <CarouselControls />
         </div>
       </div>
 

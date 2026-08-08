@@ -245,14 +245,12 @@ const CarouselNext = ({
 
 interface CarouselControlsProps {
   className?: string;
-  buttonClassName?: string;
   nextIcon?: React.ReactNode;
   prevIcon?: React.ReactNode;
 }
 
 const CarouselControls = ({
   className,
-  buttonClassName,
   nextIcon,
   prevIcon,
 }: CarouselControlsProps) => {
@@ -272,10 +270,7 @@ const CarouselControls = ({
       <Button
         data-slot="carousel-controls-next"
         variant="ghost"
-        className={cn(
-          "h-full rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
-          buttonClassName
-        )}
+        className="h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground"
         disabled={!canScrollNext}
         onClick={scrollNext}
         aria-label="Next slide"
@@ -285,10 +280,7 @@ const CarouselControls = ({
       <Button
         data-slot="carousel-controls-prev"
         variant="ghost"
-        className={cn(
-          "h-full rounded-none border-l border-l-border text-muted-foreground hover:text-foreground",
-          buttonClassName
-        )}
+        className="h-full w-control rounded-none border-l border-l-border text-muted-foreground hover:text-foreground"
         disabled={!canScrollPrev}
         onClick={scrollPrev}
         aria-label="Previous slide"
