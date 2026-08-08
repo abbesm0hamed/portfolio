@@ -1,9 +1,14 @@
-import { useCallback, useState } from "react";
 import { Button } from "@workspace/ui/components/button";
-import { Carousel, CarouselContent, CarouselControls, CarouselItem } from '@workspace/ui/components/carousel';
-import type { CarouselApi } from '@workspace/ui/components/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselControls,
+  CarouselItem,
+} from "@workspace/ui/components/carousel";
+import type { CarouselApi } from "@workspace/ui/components/carousel";
 import { useCopyToClipboard } from "@workspace/ui/hooks/use-copy-to-clipboard";
 import { Icons } from "@workspace/ui/icons";
+import { useCallback, useState } from "react";
 
 interface Writing {
   date: string;
@@ -44,14 +49,13 @@ function CopyLinkButton({ slug }: { slug: string }) {
 export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const setApi = useCallback(
-    (api: CarouselApi) => {
-      if (!api) {return;}
-      setCurrentIndex(api.selectedScrollSnap());
-      api.on("select", () => setCurrentIndex(api.selectedScrollSnap()));
-    },
-    [],
-  );
+  const setApi = useCallback((api: CarouselApi) => {
+    if (!api) {
+      return;
+    }
+    setCurrentIndex(api.selectedScrollSnap());
+    api.on("select", () => setCurrentIndex(api.selectedScrollSnap()));
+  }, []);
 
   return (
     <Carousel

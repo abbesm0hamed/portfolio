@@ -1,7 +1,7 @@
 import type { Activity } from "@workspace/ui/components/kibo-ui/contribution-graph";
 
 const GITHUB_USERNAME = "abbesm0hamed";
-const CACHE_KEY = "https://portfolio.example.com/github-contributions";
+const CACHE_KEY = "https://portfolio.example.com/v2/github-contributions";
 const CACHE_TTL_SECONDS = 6 * 60 * 60;
 const EMPTY_CACHE_TTL_SECONDS = 5 * 60;
 
@@ -101,7 +101,6 @@ const fetchContributions = async (): Promise<Activity[]> => {
   const token = import.meta.env.GITHUB_TOKEN;
 
   if (!token) {
-    console.warn("GITHUB_TOKEN is not set");
     return [];
   }
 
@@ -113,12 +112,12 @@ const fetchContributions = async (): Promise<Activity[]> => {
     headers: {
       Authorization: `bearer ${token}`,
       "Content-Type": "application/json",
+      "User-Agent": "portfolio-website",
     },
     method: "POST",
   });
 
   if (!res.ok) {
-    console.warn(`GitHub GraphQL API error: ${res.status} ${res.statusText}`);
     return [];
   }
 
@@ -163,8 +162,7 @@ export async function getContributions(): Promise<Activity[]> {
     memoryCache = { data, timestamp: Date.now(), ttl };
     await writeEdgeCache(data, ttl);
     return data;
-  } catch (error) {
-    console.warn("Failed to fetch GitHub contributions:", error);
+  } catch {
     return [];
   } finally {
     inflight = null;
