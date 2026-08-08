@@ -22,9 +22,9 @@ interface WritingsCarouselProps {
   writings: Writing[];
 }
 
-function rawMdUrl(slug: string) {
+function pageUrl(slug: string) {
   const base = import.meta.env.PUBLIC_SERVER_URL as string;
-  return `${base}/content/writings/${slug}.md`;
+  return `${base}/writings/${slug}`;
 }
 
 function CopyLinkButton({ slug }: { slug: string }) {
@@ -82,7 +82,7 @@ export default function WritingsCarousel({ writings }: WritingsCarouselProps) {
       </div>
       <CarouselContent className="flex-1 m-0 h-full">
         {writings.map((post) => {
-          const mdUrl = rawMdUrl(post.slug);
+          const mdUrl = pageUrl(post.slug);
           const promptText = `Please read and summarize this article, then be ready to answer questions about it: ${mdUrl}`;
           const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(promptText)}`;
           const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(promptText)}`;

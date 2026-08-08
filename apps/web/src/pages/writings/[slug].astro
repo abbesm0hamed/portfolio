@@ -22,8 +22,8 @@ const { Content } = await render(entry);
 const { title, date } = entry.data;
 
 const base = import.meta.env.PUBLIC_SERVER_URL as string;
-const mdUrl = `${base}/content/writings/${entry.id}.md`;
-const promptText = `Please read and summarize this article, then be ready to answer questions about it: ${mdUrl}`;
+const pageUrl = `${base}/writings/${entry.id}`;
+const promptText = `Please read and summarize this article, then be ready to answer questions about it: ${pageUrl}`;
 const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(promptText)}`;
 const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(promptText)}`;
 ---

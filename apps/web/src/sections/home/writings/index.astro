@@ -3,13 +3,15 @@ import { getCollection } from "astro:content";
 import WritingsCarousel from "./carousel.tsx"
 
 const writingEntries = await getCollection("writings");
-const writings = writingEntries.map((entry, i) => ({
-  date: entry.data.date,
-  desc: entry.data.description,
-  num: String(i + 1).padStart(2, "0"),
-  slug: entry.id,
-  title: entry.data.title,
-}));
+const writings = writingEntries
+  .toSorted((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .map((entry, i) => ({
+    date: entry.data.date,
+    desc: entry.data.description,
+    num: String(i + 1).padStart(2, "0"),
+    slug: entry.id,
+    title: entry.data.title,
+  }));
 ---
 
 <div class="h-full min-h-0 max-layout:min-h-[350px] bg-surface">
